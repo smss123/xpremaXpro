@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="dbStoreContainer">
+    <EntitySet Name="UserGroups" EntityType="db.Store.UserGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSystems" EntityType="db.Store.UserSystems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemPermessions" EntityType="db.Store.SystemPermessions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupPermessions" EntityType="db.Store.GroupPermessions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserGroupUserSystem" Association="db.Store.UserGroupUserSystem">
+      <End Role="UserGroup" EntitySet="UserGroups" />
+      <End Role="UserSystem" EntitySet="UserSystems" />
+    </AssociationSet>
+    <AssociationSet Name="SystemPermessionGroupPermession" Association="db.Store.SystemPermessionGroupPermession">
+      <End Role="SystemPermession" EntitySet="SystemPermessions" />
+      <End Role="GroupPermession" EntitySet="GroupPermessions" />
+    </AssociationSet>
+    <AssociationSet Name="UserGroupGroupPermession" Association="db.Store.UserGroupGroupPermession">
+      <End Role="UserGroup" EntitySet="UserGroups" />
+      <End Role="GroupPermession" EntitySet="GroupPermessions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSystems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserGroup_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemPermessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermessionName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PropertyName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupPermessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="permessionValue" Type="bit" Nullable="false" />
+    <Property Name="SystemPermession_Id" Type="int" Nullable="false" />
+    <Property Name="UserGroup_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserGroupUserSystem">
+    <End Role="UserGroup" Type="db.Store.UserGroups" Multiplicity="1" />
+    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserSystem">
+        <PropertyRef Name="UserGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SystemPermessionGroupPermession">
+    <End Role="SystemPermession" Type="db.Store.SystemPermessions" Multiplicity="1" />
+    <End Role="GroupPermession" Type="db.Store.GroupPermessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemPermession">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupPermession">
+        <PropertyRef Name="SystemPermession_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGroupGroupPermession">
+    <End Role="UserGroup" Type="db.Store.UserGroups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupPermession" Type="db.Store.GroupPermessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupPermession">
+        <PropertyRef Name="UserGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="db" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="dbContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserGroups" EntityType="db.UserGroup" />
+          <EntitySet Name="UserSystems" EntityType="db.UserSystem" />
+          <AssociationSet Name="UserGroupUserSystem" Association="db.UserGroupUserSystem">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="UserSystem" EntitySet="UserSystems" />
+          </AssociationSet>
+          <EntitySet Name="SystemPermessions" EntityType="db.SystemPermession" />
+          <EntitySet Name="GroupPermessions" EntityType="db.GroupPermession" />
+          <AssociationSet Name="SystemPermessionGroupPermession" Association="db.SystemPermessionGroupPermession">
+            <End Role="SystemPermession" EntitySet="SystemPermessions" />
+            <End Role="GroupPermession" EntitySet="GroupPermessions" />
+          </AssociationSet>
+          <AssociationSet Name="UserGroupGroupPermession" Association="db.UserGroupGroupPermession">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="GroupPermession" EntitySet="GroupPermessions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GroupName" Nullable="false" />
+          <Property Type="String" Name="GroupDescription" Nullable="false" />
+          <NavigationProperty Name="UserSystems" Relationship="db.UserGroupUserSystem" FromRole="UserGroup" ToRole="UserSystem" />
+          <NavigationProperty Name="GroupPermessions" Relationship="db.UserGroupGroupPermession" FromRole="UserGroup" ToRole="GroupPermession" />
+        </EntityType>
+        <EntityType Name="UserSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <NavigationProperty Name="UserGroup" Relationship="db.UserGroupUserSystem" FromRole="UserSystem" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="UserGroupUserSystem">
+          <End Type="db.UserGroup" Role="UserGroup" Multiplicity="1" />
+          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SystemPermession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PermessionName" Nullable="false" />
+          <Property Type="String" Name="PropertyName" Nullable="false" />
+          <NavigationProperty Name="GroupPermessions" Relationship="db.SystemPermessionGroupPermession" FromRole="SystemPermession" ToRole="GroupPermession" />
+        </EntityType>
+        <EntityType Name="GroupPermession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SystemPermession" Relationship="db.SystemPermessionGroupPermession" FromRole="GroupPermession" ToRole="SystemPermession" />
+          <NavigationProperty Name="UserGroup" Relationship="db.UserGroupGroupPermession" FromRole="GroupPermession" ToRole="UserGroup" />
+          <Property Type="Boolean" Name="permessionValue" Nullable="false" />
+        </EntityType>
+        <Association Name="SystemPermessionGroupPermession">
+          <End Type="db.SystemPermession" Role="SystemPermession" Multiplicity="1" />
+          <End Type="db.GroupPermession" Role="GroupPermession" Multiplicity="*" />
+        </Association>
+        <Association Name="UserGroupGroupPermession">
+          <End Type="db.UserGroup" Role="UserGroup" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="db.GroupPermession" Role="GroupPermession" Multiplicity="*" >
+          </End>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbStoreContainer" CdmEntityContainer="dbContainer">
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(db.UserGroup)">
+        <MappingFragment StoreEntitySet="UserGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSystems">
+      <EntityTypeMapping TypeName="IsTypeOf(db.UserSystem)">
+        <MappingFragment StoreEntitySet="UserSystems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemPermessions">
+      <EntityTypeMapping TypeName="IsTypeOf(db.SystemPermession)">
+        <MappingFragment StoreEntitySet="SystemPermessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PermessionName" ColumnName="PermessionName" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupPermessions">
+      <EntityTypeMapping TypeName="IsTypeOf(db.GroupPermession)">
+        <MappingFragment StoreEntitySet="GroupPermessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="permessionValue" ColumnName="permessionValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserGroupUserSystem" TypeName="db.UserGroupUserSystem" StoreEntitySet="UserSystems">
+      <EndProperty Name="UserGroup">
+        <ScalarProperty Name="Id" ColumnName="UserGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="UserSystem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SystemPermessionGroupPermession" TypeName="db.SystemPermessionGroupPermession" StoreEntitySet="GroupPermessions">
+      <EndProperty Name="SystemPermession">
+        <ScalarProperty Name="Id" ColumnName="SystemPermession_Id" />
+      </EndProperty>
+      <EndProperty Name="GroupPermession">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserGroupGroupPermession" TypeName="db.UserGroupGroupPermession" StoreEntitySet="GroupPermessions">
+      <EndProperty Name="UserGroup">
+        <ScalarProperty Name="Id" ColumnName="UserGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="GroupPermession">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
