@@ -44,5 +44,11 @@ namespace Xprema_Project
             frmsupplier frmsup = new frmsupplier();
             frmsup.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            frmFinancier frmfinc = new frmFinancier();
+            frmfinc.ShowDialog();
+        }
     }
 }
