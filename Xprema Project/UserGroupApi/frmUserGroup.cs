@@ -171,6 +171,11 @@ namespace Xprema_Project.UserGroupApi
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
        
 
        

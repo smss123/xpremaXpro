@@ -4,14 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cec3454296ad4ff99bf654e5f20e0ee4" Name="Diagram1" >
-        <EntityTypeShape EntityType="db.UserGroup" Width="1.5" PointX="7.25" PointY="0.5" />
-        <EntityTypeShape EntityType="db.UserSystem" Width="1.5" PointX="4.375" PointY="1.625" />
+      <Diagram DiagramId="cec3454296ad4ff99bf654e5f20e0ee4" Name="Diagram1" ZoomLevel="62" >
+        <EntityTypeShape EntityType="db.UserGroup" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.UserSystem" Width="1.5" PointX="5.875" PointY="2.875" IsExpanded="false" />
         <AssociationConnector Association="db.UserGroupUserSystem" />
-        <EntityTypeShape EntityType="db.SystemPermession" Width="1.5" PointX="6.75" PointY="5" />
-        <EntityTypeShape EntityType="db.GroupPermession" Width="1.5" PointX="9.5" PointY="2.625" />
+        <EntityTypeShape EntityType="db.SystemPermession" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.GroupPermession" Width="1.5" PointX="9.5" PointY="2.625" IsExpanded="false" />
         <AssociationConnector Association="db.SystemPermessionGroupPermession" />
         <AssociationConnector Association="db.UserGroupGroupPermession" />
+        <EntityTypeShape EntityType="db.Attachment" Width="1.5" PointX="2.75" PointY="10.625" FillColor="Gray" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.Contract" Width="1.5" PointX="5.75" PointY="4" FillColor="255, 255, 128" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.Employee" Width="1.5" PointX="3.5" PointY="6.375" FillColor="255, 255, 128" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.ProjectActivity" Width="1.5" PointX="2.75" PointY="14.875" FillColor="Gray" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.ProjectExpens" Width="1.5" PointX="7.75" PointY="15" FillColor="Gray" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.ProjectOrder" Width="1.5" PointX="0.5" PointY="6.75" FillColor="Gray" />
+        <EntityTypeShape EntityType="db.ProjectProfile" Width="1.5" PointX="0.5" PointY="10" FillColor="Gray" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.ProjectSubActivity" Width="1.5" PointX="5" PointY="15" FillColor="Gray" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.Thefinancier" Width="1.5" PointX="2.75" PointY="18.75" FillColor="Gray" />
+        <EntityTypeShape EntityType="db.Transaction" Width="1.5" PointX="10.25" PointY="11.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.Supplier" Width="1.5" PointX="10.625" PointY="15" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.Account" Width="1.5" PointX="8" PointY="11.625" FillColor="Blue" IsExpanded="false" />
+        <EntityTypeShape EntityType="db.DailyMovemnt" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="db.ProjectProfileAttachment" />
+        <AssociationConnector Association="db.ProjectOrderAttachment" />
+        <AssociationConnector Association="db.EmployeeContract" />
+        <AssociationConnector Association="db.ProjectProfileContract" />
+        <AssociationConnector Association="db.ContractAccount" />
+        <AssociationConnector Association="db.ProjectProfileProjectActivity" />
+        <AssociationConnector Association="db.ProjectActivityProjectSubActivity" />
+        <AssociationConnector Association="db.ProjectActivityAccount" />
+        <AssociationConnector Association="db.ProjectSubActivityProjectExpens" />
+        <AssociationConnector Association="db.ProjectExpensSupplier" />
+        <AssociationConnector Association="db.ProjectProfileThefinancier" />
+        <AssociationConnector Association="db.AccountTransaction" />
+        <AssociationConnector Association="db.ProjectProfileAccount" />
+        <AssociationConnector Association="db.UserSystemContract" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

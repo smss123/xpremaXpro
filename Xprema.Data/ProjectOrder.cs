@@ -12,18 +12,18 @@ namespace Xprema.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class UserSystem
+    public partial class ProjectOrder
     {
-        public UserSystem()
+        public ProjectOrder()
         {
-            this.Contracts = new HashSet<Contract>();
+            this.Attachments = new HashSet<Attachment>();
         }
     
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int ID { get; set; }
+        public string OrderTitle { get; set; }
+        public string OrderBody { get; set; }
+        public System.DateTime OrderDate { get; set; }
     
-        public virtual UserGroup UserGroup { get; set; }
-        public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ICollection<Attachment> Attachments { get; set; }
     }
 }

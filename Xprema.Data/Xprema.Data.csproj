@@ -46,7 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Attachment.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="CommandClass\xAccounts.cs" />
+    <Compile Include="CommandClass\xAttachments.cs" />
+    <Compile Include="CommandClass\xContracts.cs" />
+    <Compile Include="CommandClass\xDailyMovements.cs" />
+    <Compile Include="CommandClass\xEmployees.cs" />
+    <Compile Include="CommandClass\xOrders.cs" />
+    <Compile Include="CommandClass\xPeremetions.cs" />
+    <Compile Include="CommandClass\xProjectActivities.cs" />
+    <Compile Include="CommandClass\xProjectExpenses.cs" />
+    <Compile Include="CommandClass\xProjectProfile.cs" />
+    <Compile Include="CommandClass\xSubActivities.cs" />
+    <Compile Include="CommandClass\xSuppliers.cs" />
+    <Compile Include="CommandClass\xUsersSystem.cs" />
+    <Compile Include="Contract.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyMovemnt.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="db.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,11 +87,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="GroupPermession.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProjectActivity.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpens.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectOrder.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectProfile.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSubActivity.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supplier.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
     <Compile Include="SystemPermession.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Thefinancier.cs">
+      <DependentUpon>db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <Compile Include="UserGroup.cs">

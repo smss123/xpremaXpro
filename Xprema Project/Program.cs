@@ -16,7 +16,7 @@ namespace Xprema_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserGroupApi.frmUserGroup());
+            Application.Run(new Form1());
         }
     }
 }

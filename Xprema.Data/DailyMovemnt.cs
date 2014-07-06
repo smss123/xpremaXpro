@@ -12,18 +12,13 @@ namespace Xprema.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class UserSystem
+    public partial class DailyMovemnt
     {
-        public UserSystem()
-        {
-            this.Contracts = new HashSet<Contract>();
-        }
-    
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-    
-        public virtual UserGroup UserGroup { get; set; }
-        public virtual ICollection<Contract> Contracts { get; set; }
+        public int ID { get; set; }
+        public int FromAccout { get; set; }
+        public int ToAccount { get; set; }
+        public double Amount { get; set; }
+        public string Description { get; set; }
+        public System.DateTime DateOfProcess { get; set; }
     }
 }

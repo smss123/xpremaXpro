@@ -10,6 +10,19 @@
     <EntitySet Name="UserSystems" EntityType="db.Store.UserSystems" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SystemPermessions" EntityType="db.Store.SystemPermessions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupPermessions" EntityType="db.Store.GroupPermessions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Attachments" EntityType="db.Store.Attachments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contracts" EntityType="db.Store.Contracts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="db.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectActivities" EntityType="db.Store.ProjectActivities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectExpenses" EntityType="db.Store.ProjectExpenses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectOrders" EntityType="db.Store.ProjectOrders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectProfiles" EntityType="db.Store.ProjectProfiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectSubActivities" EntityType="db.Store.ProjectSubActivities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Thefinanciers" EntityType="db.Store.Thefinanciers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transactions" EntityType="db.Store.Transactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Suppliers" EntityType="db.Store.Suppliers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts" EntityType="db.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DailyMovemnts" EntityType="db.Store.DailyMovemnts" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserGroupUserSystem" Association="db.Store.UserGroupUserSystem">
       <End Role="UserGroup" EntitySet="UserGroups" />
       <End Role="UserSystem" EntitySet="UserSystems" />
@@ -21,6 +34,62 @@
     <AssociationSet Name="UserGroupGroupPermession" Association="db.Store.UserGroupGroupPermession">
       <End Role="UserGroup" EntitySet="UserGroups" />
       <End Role="GroupPermession" EntitySet="GroupPermessions" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileAttachment" Association="db.Store.ProjectProfileAttachment">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="Attachment" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectOrderAttachment" Association="db.Store.ProjectOrderAttachment">
+      <End Role="ProjectOrder" EntitySet="ProjectOrders" />
+      <End Role="Attachment" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeContract" Association="db.Store.EmployeeContract">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileContract" Association="db.Store.ProjectProfileContract">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="ContractAccount" Association="db.Store.ContractAccount">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileProjectActivity" Association="db.Store.ProjectProfileProjectActivity">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectActivityProjectSubActivity" Association="db.Store.ProjectActivityProjectSubActivity">
+      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+      <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectActivityAccount" Association="db.Store.ProjectActivityAccount">
+      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectSubActivityProjectExpens" Association="db.Store.ProjectSubActivityProjectExpens">
+      <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+      <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectExpensSupplier" Association="db.Store.ProjectExpensSupplier">
+      <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+      <End Role="Supplier" EntitySet="Suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileThefinancier" Association="db.Store.ProjectProfileThefinancier">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="Thefinancier" EntitySet="Thefinanciers" />
+    </AssociationSet>
+    <AssociationSet Name="AccountTransaction" Association="db.Store.AccountTransaction">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileAccount" Association="db.Store.ProjectProfileAccount">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="UserSystemContract" Association="db.Store.UserSystemContract">
+      <End Role="UserSystem" EntitySet="UserSystems" />
+      <End Role="Contract" EntitySet="Contracts" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserGroups">
@@ -56,6 +125,168 @@
     <Property Name="permessionValue" Type="bit" Nullable="false" />
     <Property Name="SystemPermession_Id" Type="int" Nullable="false" />
     <Property Name="UserGroup_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Attachments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttachmentName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="fileContent" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+    <Property Name="ProjectOrder_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contracts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="SelaryAmount" Type="float" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="EmplyeeAccount_ID" Type="int" Nullable="true" />
+    <Property Name="Employee_ID" Type="int" Nullable="false" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+    <Property Name="UserSystem_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmployeejobNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmployeeGender" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmployeeNationalNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Mobilenumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProjectActivities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Progress" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="float" Nullable="false" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectExpenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpensesName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateofProcess" Type="datetime" Nullable="false" />
+    <Property Name="BillNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RequiarAmount" Type="float" Nullable="false" />
+    <Property Name="CashingNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ProjectSubActivity_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectOrders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTitle" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OrderBody" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectProfiles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ProjectDescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="progress" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectSubActivities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubActivityName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Startdate" Type="datetime" Nullable="false" />
+    <Property Name="enddate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Persentage" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectActivity_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Thefinanciers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="financiername" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="agentName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Fax" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adderss" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="datetime" Nullable="false" />
+    <Property Name="TotalIn" Type="float" Nullable="false" />
+    <Property Name="TotalOut" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CommandNames" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Account_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SuppliersNatural" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Fax" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adderss" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ProjectExpen_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AccountDescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Coin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AccountNatural" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Contract_ID" Type="int" Nullable="true" />
+    <Property Name="ProjectActivity_ID" Type="int" Nullable="false" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DailyMovemnts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromAccout" Type="int" Nullable="false" />
+    <Property Name="ToAccount" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateOfProcess" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="UserGroupUserSystem">
     <End Role="UserGroup" Type="db.Store.UserGroups" Multiplicity="1" />
@@ -95,6 +326,174 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProjectProfileAttachment">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="Attachment" Type="db.Store.Attachments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Attachment">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectOrderAttachment">
+    <End Role="ProjectOrder" Type="db.Store.ProjectOrders" Multiplicity="1" />
+    <End Role="Attachment" Type="db.Store.Attachments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Attachment">
+        <PropertyRef Name="ProjectOrder_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeContract">
+    <End Role="Employee" Type="db.Store.Employees" Multiplicity="1" />
+    <End Role="Contract" Type="db.Store.Contracts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProfileContract">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="Contract" Type="db.Store.Contracts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContractAccount">
+    <End Role="Contract" Type="db.Store.Contracts" Multiplicity="0..1" />
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Contract_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProfileProjectActivity">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectActivity">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectActivityProjectSubActivity">
+    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="1" />
+    <End Role="ProjectSubActivity" Type="db.Store.ProjectSubActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectSubActivity">
+        <PropertyRef Name="ProjectActivity_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectActivityAccount">
+    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="1" />
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="ProjectActivity_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectSubActivityProjectExpens">
+    <End Role="ProjectSubActivity" Type="db.Store.ProjectSubActivities" Multiplicity="1" />
+    <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectSubActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectExpens">
+        <PropertyRef Name="ProjectSubActivity_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectExpensSupplier">
+    <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="1" />
+    <End Role="Supplier" Type="db.Store.Suppliers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectExpens">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="ProjectExpen_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProfileThefinancier">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="Thefinancier" Type="db.Store.Thefinanciers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Thefinancier">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountTransaction">
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="1" />
+    <End Role="Transaction" Type="db.Store.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProfileAccount">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSystemContract">
+    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="1" />
+    <End Role="Contract" Type="db.Store.Contracts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSystem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="UserSystem_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -116,6 +515,75 @@
             <End Role="UserGroup" EntitySet="UserGroups" />
             <End Role="GroupPermession" EntitySet="GroupPermessions" />
           </AssociationSet>
+          <EntitySet Name="Attachments" EntityType="db.Attachment" />
+          <EntitySet Name="Contracts" EntityType="db.Contract" />
+          <EntitySet Name="Employees" EntityType="db.Employee" />
+          <EntitySet Name="ProjectActivities" EntityType="db.ProjectActivity" />
+          <EntitySet Name="ProjectExpenses" EntityType="db.ProjectExpens" />
+          <EntitySet Name="ProjectOrders" EntityType="db.ProjectOrder" />
+          <EntitySet Name="ProjectProfiles" EntityType="db.ProjectProfile" />
+          <EntitySet Name="ProjectSubActivities" EntityType="db.ProjectSubActivity" />
+          <EntitySet Name="Thefinanciers" EntityType="db.Thefinancier" />
+          <EntitySet Name="Transactions" EntityType="db.Transaction" />
+          <EntitySet Name="Suppliers" EntityType="db.Supplier" />
+          <EntitySet Name="Accounts" EntityType="db.Account" />
+          <EntitySet Name="DailyMovemnts" EntityType="db.DailyMovemnt" />
+          <AssociationSet Name="ProjectProfileAttachment" Association="db.ProjectProfileAttachment">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="Attachment" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectOrderAttachment" Association="db.ProjectOrderAttachment">
+            <End Role="ProjectOrder" EntitySet="ProjectOrders" />
+            <End Role="Attachment" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeContract" Association="db.EmployeeContract">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProfileContract" Association="db.ProjectProfileContract">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="ContractAccount" Association="db.ContractAccount">
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProfileProjectActivity" Association="db.ProjectProfileProjectActivity">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectActivityProjectSubActivity" Association="db.ProjectActivityProjectSubActivity">
+            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+            <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectActivityAccount" Association="db.ProjectActivityAccount">
+            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectSubActivityProjectExpens" Association="db.ProjectSubActivityProjectExpens">
+            <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+            <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectExpensSupplier" Association="db.ProjectExpensSupplier">
+            <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProfileThefinancier" Association="db.ProjectProfileThefinancier">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="Thefinancier" EntitySet="Thefinanciers" />
+          </AssociationSet>
+          <AssociationSet Name="AccountTransaction" Association="db.AccountTransaction">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProfileAccount" Association="db.ProjectProfileAccount">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="UserSystemContract" Association="db.UserSystemContract">
+            <End Role="UserSystem" EntitySet="UserSystems" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserGroup">
           <Key>
@@ -135,6 +603,7 @@
           <Property Type="String" Name="UserName" Nullable="false" />
           <Property Type="String" Name="Password" Nullable="false" />
           <NavigationProperty Name="UserGroup" Relationship="db.UserGroupUserSystem" FromRole="UserSystem" ToRole="UserGroup" />
+          <NavigationProperty Name="Contracts" Relationship="db.UserSystemContract" FromRole="UserSystem" ToRole="Contract" />
         </EntityType>
         <Association Name="UserGroupUserSystem">
           <End Type="db.UserGroup" Role="UserGroup" Multiplicity="1" />
@@ -168,6 +637,237 @@
           </End>
           <End Type="db.GroupPermession" Role="GroupPermession" Multiplicity="*" >
           </End>
+        </Association>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttachmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fileContent" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileAttachment" FromRole="Attachment" ToRole="ProjectProfile" />
+          <NavigationProperty Name="ProjectOrder" Relationship="db.ProjectOrderAttachment" FromRole="Attachment" ToRole="ProjectOrder" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SelaryAmount" Type="Double" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="EmplyeeAccount_ID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="db.EmployeeContract" FromRole="Contract" ToRole="Employee" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileContract" FromRole="Contract" ToRole="ProjectProfile" />
+          <NavigationProperty Name="Accounts" Relationship="db.ContractAccount" FromRole="Contract" ToRole="Account" />
+          <NavigationProperty Name="UserSystem" Relationship="db.UserSystemContract" FromRole="Contract" ToRole="UserSystem" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeejobNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeGender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNationalNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobilenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="db.EmployeeContract" FromRole="Employee" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="ProjectActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Progress" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileProjectActivity" FromRole="ProjectActivity" ToRole="ProjectProfile" />
+          <NavigationProperty Name="ProjectSubActivities" Relationship="db.ProjectActivityProjectSubActivity" FromRole="ProjectActivity" ToRole="ProjectSubActivity" />
+          <NavigationProperty Name="Accounts" Relationship="db.ProjectActivityAccount" FromRole="ProjectActivity" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="ProjectExpens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpensesName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateofProcess" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BillNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RequiarAmount" Type="Double" Nullable="false" />
+          <Property Name="CashingNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectSubActivity" Relationship="db.ProjectSubActivityProjectExpens" FromRole="ProjectExpens" ToRole="ProjectSubActivity" />
+          <NavigationProperty Name="Suppliers" Relationship="db.ProjectExpensSupplier" FromRole="ProjectExpens" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="ProjectOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Attachments" Relationship="db.ProjectOrderAttachment" FromRole="ProjectOrder" ToRole="Attachment" />
+        </EntityType>
+        <EntityType Name="ProjectProfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="progress" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Attachments" Relationship="db.ProjectProfileAttachment" FromRole="ProjectProfile" ToRole="Attachment" />
+          <NavigationProperty Name="Contracts" Relationship="db.ProjectProfileContract" FromRole="ProjectProfile" ToRole="Contract" />
+          <NavigationProperty Name="ProjectActivities" Relationship="db.ProjectProfileProjectActivity" FromRole="ProjectProfile" ToRole="ProjectActivity" />
+          <NavigationProperty Name="Thefinanciers" Relationship="db.ProjectProfileThefinancier" FromRole="ProjectProfile" ToRole="Thefinancier" />
+          <NavigationProperty Name="Accounts" Relationship="db.ProjectProfileAccount" FromRole="ProjectProfile" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="ProjectSubActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubActivityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Startdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="enddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Persentage" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectActivity" Relationship="db.ProjectActivityProjectSubActivity" FromRole="ProjectSubActivity" ToRole="ProjectActivity" />
+          <NavigationProperty Name="ProjectExpens" Relationship="db.ProjectSubActivityProjectExpens" FromRole="ProjectSubActivity" ToRole="ProjectExpens" />
+        </EntityType>
+        <EntityType Name="Thefinancier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="financiername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="agentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adderss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileThefinancier" FromRole="Thefinancier" ToRole="ProjectProfile" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalIn" Type="Double" Nullable="false" />
+          <Property Name="TotalOut" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommandNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="db.AccountTransaction" FromRole="Transaction" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SuppliersNatural" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adderss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectExpen" Relationship="db.ProjectExpensSupplier" FromRole="Supplier" ToRole="ProjectExpens" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Coin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNatural" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contract" Relationship="db.ContractAccount" FromRole="Account" ToRole="Contract" />
+          <NavigationProperty Name="ProjectActivity" Relationship="db.ProjectActivityAccount" FromRole="Account" ToRole="ProjectActivity" />
+          <NavigationProperty Name="Transactions" Relationship="db.AccountTransaction" FromRole="Account" ToRole="Transaction" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileAccount" FromRole="Account" ToRole="ProjectProfile" />
+        </EntityType>
+        <EntityType Name="DailyMovemnt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromAccout" Type="Int32" Nullable="false" />
+          <Property Name="ToAccount" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfProcess" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="ProjectProfileAttachment">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.Attachment" Role="Attachment" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectOrderAttachment">
+          <End Type="db.ProjectOrder" Role="ProjectOrder" Multiplicity="1" />
+          <End Type="db.Attachment" Role="Attachment" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeContract">
+          <End Type="db.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="db.Contract" Role="Contract" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectProfileContract">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.Contract" Role="Contract" Multiplicity="*" />
+        </Association>
+        <Association Name="ContractAccount">
+          <End Type="db.Contract" Role="Contract" Multiplicity="0..1" />
+          <End Type="db.Account" Role="Account" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectProfileProjectActivity">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectActivityProjectSubActivity">
+          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="1" />
+          <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectActivityAccount">
+          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="1" />
+          <End Type="db.Account" Role="Account" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectSubActivityProjectExpens">
+          <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="1" />
+          <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectExpensSupplier">
+          <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="1" />
+          <End Type="db.Supplier" Role="Supplier" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectProfileThefinancier">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.Thefinancier" Role="Thefinancier" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountTransaction">
+          <End Type="db.Account" Role="Account" Multiplicity="1" />
+          <End Type="db.Transaction" Role="Transaction" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectProfileAccount">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.Account" Role="Account" Multiplicity="*" />
+        </Association>
+        <Association Name="UserSystemContract">
+          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="1" />
+          <End Type="db.Contract" Role="Contract" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -210,6 +910,167 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Attachments">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Attachment)">
+        <MappingFragment StoreEntitySet="Attachments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AttachmentName" ColumnName="AttachmentName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="fileContent" ColumnName="fileContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contracts">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Contract)">
+        <MappingFragment StoreEntitySet="Contracts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="SelaryAmount" ColumnName="SelaryAmount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EmplyeeAccount_ID" ColumnName="EmplyeeAccount_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeejobNumber" ColumnName="EmployeejobNumber" />
+          <ScalarProperty Name="EmployeeGender" ColumnName="EmployeeGender" />
+          <ScalarProperty Name="EmployeeNationalNumber" ColumnName="EmployeeNationalNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Mobilenumber" ColumnName="Mobilenumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectActivities">
+      <EntityTypeMapping TypeName="IsTypeOf(db.ProjectActivity)">
+        <MappingFragment StoreEntitySet="ProjectActivities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Progress" ColumnName="Progress" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectExpenses">
+      <EntityTypeMapping TypeName="IsTypeOf(db.ProjectExpens)">
+        <MappingFragment StoreEntitySet="ProjectExpenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ExpensesName" ColumnName="ExpensesName" />
+          <ScalarProperty Name="DateofProcess" ColumnName="DateofProcess" />
+          <ScalarProperty Name="BillNumber" ColumnName="BillNumber" />
+          <ScalarProperty Name="RequiarAmount" ColumnName="RequiarAmount" />
+          <ScalarProperty Name="CashingNumber" ColumnName="CashingNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(db.ProjectOrder)">
+        <MappingFragment StoreEntitySet="ProjectOrders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderTitle" ColumnName="OrderTitle" />
+          <ScalarProperty Name="OrderBody" ColumnName="OrderBody" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectProfiles">
+      <EntityTypeMapping TypeName="IsTypeOf(db.ProjectProfile)">
+        <MappingFragment StoreEntitySet="ProjectProfiles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="progress" ColumnName="progress" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSubActivities">
+      <EntityTypeMapping TypeName="IsTypeOf(db.ProjectSubActivity)">
+        <MappingFragment StoreEntitySet="ProjectSubActivities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SubActivityName" ColumnName="SubActivityName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Persentage" ColumnName="Persentage" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thefinanciers">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Thefinancier)">
+        <MappingFragment StoreEntitySet="Thefinanciers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="financiername" ColumnName="financiername" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="agentName" ColumnName="agentName" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Adderss" ColumnName="Adderss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Transaction)">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="TotalIn" ColumnName="TotalIn" />
+          <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CommandNames" ColumnName="CommandNames" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Supplier)">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SuppliersNatural" ColumnName="SuppliersNatural" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Adderss" ColumnName="Adderss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="IsTypeOf(db.Account)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountDescription" ColumnName="AccountDescription" />
+          <ScalarProperty Name="Coin" ColumnName="Coin" />
+          <ScalarProperty Name="AccountNatural" ColumnName="AccountNatural" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyMovemnts">
+      <EntityTypeMapping TypeName="IsTypeOf(db.DailyMovemnt)">
+        <MappingFragment StoreEntitySet="DailyMovemnts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromAccout" ColumnName="FromAccout" />
+          <ScalarProperty Name="ToAccount" ColumnName="ToAccount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateOfProcess" ColumnName="DateOfProcess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="UserGroupUserSystem" TypeName="db.UserGroupUserSystem" StoreEntitySet="UserSystems">
       <EndProperty Name="UserGroup">
         <ScalarProperty Name="Id" ColumnName="UserGroup_Id" />
@@ -234,6 +1095,119 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileAttachment" TypeName="db.ProjectProfileAttachment" StoreEntitySet="Attachments">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="Attachment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectOrderAttachment" TypeName="db.ProjectOrderAttachment" StoreEntitySet="Attachments">
+      <EndProperty Name="ProjectOrder">
+        <ScalarProperty Name="ID" ColumnName="ProjectOrder_ID" />
+      </EndProperty>
+      <EndProperty Name="Attachment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeContract" TypeName="db.EmployeeContract" StoreEntitySet="Contracts">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="ID" ColumnName="Employee_ID" />
+      </EndProperty>
+      <EndProperty Name="Contract">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileContract" TypeName="db.ProjectProfileContract" StoreEntitySet="Contracts">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="Contract">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContractAccount" TypeName="db.ContractAccount" StoreEntitySet="Accounts">
+      <EndProperty Name="Contract">
+        <ScalarProperty Name="ID" ColumnName="Contract_ID" />
+      </EndProperty>
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition ColumnName="Contract_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileProjectActivity" TypeName="db.ProjectProfileProjectActivity" StoreEntitySet="ProjectActivities">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectActivity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectActivityProjectSubActivity" TypeName="db.ProjectActivityProjectSubActivity" StoreEntitySet="ProjectSubActivities">
+      <EndProperty Name="ProjectActivity">
+        <ScalarProperty Name="ID" ColumnName="ProjectActivity_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectSubActivity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectActivityAccount" TypeName="db.ProjectActivityAccount" StoreEntitySet="Accounts">
+      <EndProperty Name="ProjectActivity">
+        <ScalarProperty Name="ID" ColumnName="ProjectActivity_ID" />
+      </EndProperty>
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectSubActivityProjectExpens" TypeName="db.ProjectSubActivityProjectExpens" StoreEntitySet="ProjectExpenses">
+      <EndProperty Name="ProjectSubActivity">
+        <ScalarProperty Name="ID" ColumnName="ProjectSubActivity_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectExpens">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectExpensSupplier" TypeName="db.ProjectExpensSupplier" StoreEntitySet="Suppliers">
+      <EndProperty Name="ProjectExpens">
+        <ScalarProperty Name="ID" ColumnName="ProjectExpen_ID" />
+      </EndProperty>
+      <EndProperty Name="Supplier">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileThefinancier" TypeName="db.ProjectProfileThefinancier" StoreEntitySet="Thefinanciers">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="Thefinancier">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountTransaction" TypeName="db.AccountTransaction" StoreEntitySet="Transactions">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="Account_ID" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileAccount" TypeName="db.ProjectProfileAccount" StoreEntitySet="Accounts">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserSystemContract" TypeName="db.UserSystemContract" StoreEntitySet="Contracts">
+      <EndProperty Name="UserSystem">
+        <ScalarProperty Name="Id" ColumnName="UserSystem_Id" />
+      </EndProperty>
+      <EndProperty Name="Contract">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -249,6 +1223,8 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

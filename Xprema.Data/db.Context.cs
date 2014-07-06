@@ -29,5 +29,18 @@ namespace Xprema.Data
         public DbSet<UserSystem> UserSystems { get; set; }
         public DbSet<SystemPermession> SystemPermessions { get; set; }
         public DbSet<GroupPermession> GroupPermessions { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<ProjectActivity> ProjectActivities { get; set; }
+        public DbSet<ProjectExpens> ProjectExpenses { get; set; }
+        public DbSet<ProjectOrder> ProjectOrders { get; set; }
+        public DbSet<ProjectProfile> ProjectProfiles { get; set; }
+        public DbSet<ProjectSubActivity> ProjectSubActivities { get; set; }
+        public DbSet<Thefinancier> Thefinanciers { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<DailyMovemnt> DailyMovemnts { get; set; }
     }
 }

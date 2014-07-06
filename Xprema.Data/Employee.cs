@@ -12,18 +12,22 @@ namespace Xprema.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class UserSystem
+    public partial class Employee
     {
-        public UserSystem()
+        public Employee()
         {
             this.Contracts = new HashSet<Contract>();
         }
     
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int ID { get; set; }
+        public string EmployeeName { get; set; }
+        public string EmployeejobNumber { get; set; }
+        public string EmployeeGender { get; set; }
+        public string EmployeeNationalNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Mobilenumber { get; set; }
+        public string Email { get; set; }
     
-        public virtual UserGroup UserGroup { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; }
     }
 }
