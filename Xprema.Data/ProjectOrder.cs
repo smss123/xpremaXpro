@@ -25,5 +25,6 @@ namespace Xprema.Data
         public System.DateTime OrderDate { get; set; }
     
         public virtual ICollection<Attachment> Attachments { get; set; }
+        public virtual ProjectProfile ProjectProfile { get; set; }
     }
 }

@@ -17,6 +17,10 @@ namespace Xprema.Data
         public Account()
         {
             this.Transactions = new HashSet<Transaction>();
+            this.ProjectActivities = new HashSet<ProjectActivity>();
+            this.ProjectSubActivities = new HashSet<ProjectSubActivity>();
+            this.ProjectExpens = new HashSet<ProjectExpens>();
+            this.ProjectActivities1 = new HashSet<ProjectActivity>();
         }
     
         public int ID { get; set; }
@@ -26,8 +30,11 @@ namespace Xprema.Data
         public string AccountNatural { get; set; }
     
         public virtual Contract Contract { get; set; }
-        public virtual ProjectActivity ProjectActivity { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ProjectProfile ProjectProfile { get; set; }
+        public virtual ICollection<ProjectActivity> ProjectActivities { get; set; }
+        public virtual ICollection<ProjectSubActivity> ProjectSubActivities { get; set; }
+        public virtual ICollection<ProjectExpens> ProjectExpens { get; set; }
+        public virtual ICollection<ProjectActivity> ProjectActivities1 { get; set; }
     }
 }

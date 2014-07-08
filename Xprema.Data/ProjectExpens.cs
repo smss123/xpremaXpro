@@ -28,5 +28,6 @@ namespace Xprema.Data
     
         public virtual ProjectSubActivity ProjectSubActivity { get; set; }
         public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

@@ -46,6 +46,8 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             this.userSystemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -66,6 +68,7 @@
             this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
             this.btrEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridViewTemplate1 = new Telerik.WinControls.UI.GridViewTemplate();
             iDLabel = new System.Windows.Forms.Label();
             employeeNameLabel = new System.Windows.Forms.Label();
             employeeGenderLabel = new System.Windows.Forms.Label();
@@ -81,87 +84,88 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeRadGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeRadGridView.MasterTemplate)).BeginInit();
             this.employeecontextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTemplate1)).BeginInit();
             this.SuspendLayout();
             // 
             // iDLabel
             // 
             iDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(1090, 36);
+            iDLabel.Location = new System.Drawing.Point(991, 46);
             iDLabel.Name = "iDLabel";
-            iDLabel.Size = new System.Drawing.Size(21, 13);
+            iDLabel.Size = new System.Drawing.Size(51, 13);
             iDLabel.TabIndex = 1;
-            iDLabel.Text = "ID:";
+            iDLabel.Text = "رقم الموظف";
             // 
             // employeeNameLabel
             // 
             employeeNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             employeeNameLabel.AutoSize = true;
-            employeeNameLabel.Location = new System.Drawing.Point(874, 36);
+            employeeNameLabel.Location = new System.Drawing.Point(991, 72);
             employeeNameLabel.Name = "employeeNameLabel";
-            employeeNameLabel.Size = new System.Drawing.Size(91, 13);
+            employeeNameLabel.Size = new System.Drawing.Size(53, 13);
             employeeNameLabel.TabIndex = 1;
-            employeeNameLabel.Text = "Employee Name:";
+            employeeNameLabel.Text = "اسم الموظف";
             // 
             // employeeGenderLabel
             // 
             employeeGenderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             employeeGenderLabel.AutoSize = true;
-            employeeGenderLabel.Location = new System.Drawing.Point(601, 36);
+            employeeGenderLabel.Location = new System.Drawing.Point(991, 98);
             employeeGenderLabel.Name = "employeeGenderLabel";
-            employeeGenderLabel.Size = new System.Drawing.Size(100, 13);
+            employeeGenderLabel.Size = new System.Drawing.Size(26, 13);
             employeeGenderLabel.TabIndex = 1;
-            employeeGenderLabel.Text = "Employee Gender:";
+            employeeGenderLabel.Text = "النوع";
             // 
             // employeejobNumberLabel
             // 
             employeejobNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             employeejobNumberLabel.AutoSize = true;
-            employeejobNumberLabel.Location = new System.Drawing.Point(350, 36);
+            employeejobNumberLabel.Location = new System.Drawing.Point(461, 46);
             employeejobNumberLabel.Name = "employeejobNumberLabel";
-            employeejobNumberLabel.Size = new System.Drawing.Size(120, 13);
+            employeejobNumberLabel.Size = new System.Drawing.Size(48, 13);
             employeejobNumberLabel.TabIndex = 1;
-            employeejobNumberLabel.Text = "Employeejob Number:";
+            employeejobNumberLabel.Text = "رقم الوظيفة";
             // 
             // mobilenumberLabel
             // 
             mobilenumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             mobilenumberLabel.AutoSize = true;
-            mobilenumberLabel.Location = new System.Drawing.Point(745, 82);
+            mobilenumberLabel.Location = new System.Drawing.Point(461, 72);
             mobilenumberLabel.Name = "mobilenumberLabel";
-            mobilenumberLabel.Size = new System.Drawing.Size(86, 13);
+            mobilenumberLabel.Size = new System.Drawing.Size(52, 13);
             mobilenumberLabel.TabIndex = 1;
-            mobilenumberLabel.Text = "Mobilenumber:";
+            mobilenumberLabel.Text = "رقم المحمول";
             // 
             // phoneNumberLabel
             // 
             phoneNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             phoneNumberLabel.AutoSize = true;
-            phoneNumberLabel.Location = new System.Drawing.Point(1027, 82);
+            phoneNumberLabel.Location = new System.Drawing.Point(461, 98);
             phoneNumberLabel.Name = "phoneNumberLabel";
-            phoneNumberLabel.Size = new System.Drawing.Size(87, 13);
+            phoneNumberLabel.Size = new System.Drawing.Size(46, 13);
             phoneNumberLabel.TabIndex = 1;
-            phoneNumberLabel.Text = "Phone Number:";
+            phoneNumberLabel.Text = "رقم الهاتف";
             // 
             // emailLabel
             // 
             emailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(491, 82);
+            emailLabel.Location = new System.Drawing.Point(461, 124);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(37, 13);
+            emailLabel.Size = new System.Drawing.Size(68, 13);
             emailLabel.TabIndex = 1;
-            emailLabel.Text = "Email:";
+            emailLabel.Text = "البريد الالكتروني";
             // 
             // employeeNationalNumberLabel
             // 
             employeeNationalNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             employeeNationalNumberLabel.AutoSize = true;
-            employeeNationalNumberLabel.Location = new System.Drawing.Point(149, 82);
+            employeeNationalNumberLabel.Location = new System.Drawing.Point(991, 125);
             employeeNationalNumberLabel.Name = "employeeNationalNumberLabel";
-            employeeNationalNumberLabel.Size = new System.Drawing.Size(150, 13);
+            employeeNationalNumberLabel.Size = new System.Drawing.Size(50, 13);
             employeeNationalNumberLabel.TabIndex = 1;
-            employeeNationalNumberLabel.Text = "Employee National Number:";
+            employeeNationalNumberLabel.Text = "بطاقه الهويه";
             // 
             // userSystemBindingSource
             // 
@@ -177,7 +181,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 537);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 477);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1124, 22);
             this.statusStrip1.TabIndex = 1;
@@ -210,8 +214,8 @@
             this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.employeeNameTextBox);
             this.radCollapsiblePanel1.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.radCollapsiblePanel1.PanelContainer.Location = new System.Drawing.Point(-1, 1);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(1124, 150);
-            this.radCollapsiblePanel1.Size = new System.Drawing.Size(1124, 178);
+            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(1124, 186);
+            this.radCollapsiblePanel1.Size = new System.Drawing.Size(1124, 214);
             this.radCollapsiblePanel1.TabIndex = 2;
             this.radCollapsiblePanel1.Text = "radCollapsiblePanel1";
             // 
@@ -219,9 +223,9 @@
             // 
             this.employeeNationalNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeNationalNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "EmployeeNationalNumber", true));
-            this.employeeNationalNumberTextBox.Location = new System.Drawing.Point(5, 80);
+            this.employeeNationalNumberTextBox.Location = new System.Drawing.Point(736, 122);
             this.employeeNationalNumberTextBox.Name = "employeeNationalNumberTextBox";
-            this.employeeNationalNumberTextBox.Size = new System.Drawing.Size(146, 20);
+            this.employeeNationalNumberTextBox.Size = new System.Drawing.Size(249, 20);
             this.employeeNationalNumberTextBox.TabIndex = 2;
             // 
             // employeeBindingSource
@@ -232,64 +236,68 @@
             // 
             this.mobilenumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mobilenumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Mobilenumber", true));
-            this.mobilenumberTextBox.Location = new System.Drawing.Point(551, 79);
+            this.mobilenumberTextBox.Location = new System.Drawing.Point(202, 69);
             this.mobilenumberTextBox.Name = "mobilenumberTextBox";
-            this.mobilenumberTextBox.Size = new System.Drawing.Size(188, 20);
+            this.mobilenumberTextBox.Size = new System.Drawing.Size(249, 20);
             this.mobilenumberTextBox.TabIndex = 2;
             // 
             // employeejobNumberTextBox
             // 
             this.employeejobNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.employeejobNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "EmployeejobNumber", true));
-            this.employeejobNumberTextBox.Location = new System.Drawing.Point(218, 33);
+            this.employeejobNumberTextBox.Location = new System.Drawing.Point(202, 43);
             this.employeejobNumberTextBox.Name = "employeejobNumberTextBox";
-            this.employeejobNumberTextBox.Size = new System.Drawing.Size(126, 20);
+            this.employeejobNumberTextBox.Size = new System.Drawing.Size(249, 20);
             this.employeejobNumberTextBox.TabIndex = 2;
             // 
             // emailTextBox
             // 
             this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(305, 79);
+            this.emailTextBox.Location = new System.Drawing.Point(202, 121);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(180, 20);
+            this.emailTextBox.Size = new System.Drawing.Size(249, 20);
             this.emailTextBox.TabIndex = 2;
             // 
             // employeeGenderComboBox
             // 
             this.employeeGenderComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeGenderComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "EmployeeGender", true));
+            this.employeeGenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.employeeGenderComboBox.FormattingEnabled = true;
-            this.employeeGenderComboBox.Location = new System.Drawing.Point(474, 33);
+            this.employeeGenderComboBox.Items.AddRange(new object[] {
+            "ذكر",
+            "أنثى"});
+            this.employeeGenderComboBox.Location = new System.Drawing.Point(736, 95);
             this.employeeGenderComboBox.Name = "employeeGenderComboBox";
-            this.employeeGenderComboBox.Size = new System.Drawing.Size(121, 21);
+            this.employeeGenderComboBox.Size = new System.Drawing.Size(249, 21);
             this.employeeGenderComboBox.TabIndex = 2;
             // 
             // phoneNumberTextBox
             // 
             this.phoneNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "PhoneNumber", true));
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(852, 79);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(202, 95);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(169, 20);
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(249, 20);
             this.phoneNumberTextBox.TabIndex = 2;
             // 
             // iDTextBox
             // 
             this.iDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "ID", true));
-            this.iDTextBox.Location = new System.Drawing.Point(979, 33);
+            this.iDTextBox.Location = new System.Drawing.Point(736, 43);
             this.iDTextBox.Name = "iDTextBox";
-            this.iDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.iDTextBox.Size = new System.Drawing.Size(249, 20);
             this.iDTextBox.TabIndex = 2;
             // 
             // employeeNameTextBox
             // 
             this.employeeNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.employeeNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "EmployeeName", true));
-            this.employeeNameTextBox.Location = new System.Drawing.Point(719, 33);
+            this.employeeNameTextBox.Location = new System.Drawing.Point(736, 69);
             this.employeeNameTextBox.Name = "employeeNameTextBox";
-            this.employeeNameTextBox.Size = new System.Drawing.Size(149, 20);
+            this.employeeNameTextBox.Size = new System.Drawing.Size(249, 20);
             this.employeeNameTextBox.TabIndex = 2;
             // 
             // employeeRadGridView
@@ -300,7 +308,7 @@
             this.employeeRadGridView.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.employeeRadGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.employeeRadGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.employeeRadGridView.Location = new System.Drawing.Point(0, 202);
+            this.employeeRadGridView.Location = new System.Drawing.Point(0, 238);
             // 
             // employeeRadGridView
             // 
@@ -308,52 +316,52 @@
             gridViewDecimalColumn1.DataType = typeof(int);
             gridViewDecimalColumn1.EnableExpressionEditor = false;
             gridViewDecimalColumn1.FieldName = "ID";
-            gridViewDecimalColumn1.HeaderText = "ID";
+            gridViewDecimalColumn1.HeaderText = "الرقم";
             gridViewDecimalColumn1.IsAutoGenerated = true;
             gridViewDecimalColumn1.Name = "ID";
-            gridViewDecimalColumn1.Width = 139;
+            gridViewDecimalColumn1.Width = 137;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.FieldName = "EmployeeName";
-            gridViewTextBoxColumn1.HeaderText = "EmployeeName";
+            gridViewTextBoxColumn1.HeaderText = "الاسم";
             gridViewTextBoxColumn1.IsAutoGenerated = true;
             gridViewTextBoxColumn1.Name = "EmployeeName";
-            gridViewTextBoxColumn1.Width = 139;
+            gridViewTextBoxColumn1.Width = 137;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.FieldName = "EmployeejobNumber";
-            gridViewTextBoxColumn2.HeaderText = "EmployeejobNumber";
+            gridViewTextBoxColumn2.HeaderText = "رقم الوظيفة";
             gridViewTextBoxColumn2.IsAutoGenerated = true;
             gridViewTextBoxColumn2.Name = "EmployeejobNumber";
-            gridViewTextBoxColumn2.Width = 139;
+            gridViewTextBoxColumn2.Width = 137;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.FieldName = "EmployeeGender";
-            gridViewTextBoxColumn3.HeaderText = "EmployeeGender";
+            gridViewTextBoxColumn3.HeaderText = "النوع";
             gridViewTextBoxColumn3.IsAutoGenerated = true;
             gridViewTextBoxColumn3.Name = "EmployeeGender";
-            gridViewTextBoxColumn3.Width = 139;
+            gridViewTextBoxColumn3.Width = 137;
             gridViewTextBoxColumn4.EnableExpressionEditor = false;
             gridViewTextBoxColumn4.FieldName = "EmployeeNationalNumber";
-            gridViewTextBoxColumn4.HeaderText = "EmployeeNationalNumber";
+            gridViewTextBoxColumn4.HeaderText = "رقم بطاقة الهوية";
             gridViewTextBoxColumn4.IsAutoGenerated = true;
             gridViewTextBoxColumn4.Name = "EmployeeNationalNumber";
-            gridViewTextBoxColumn4.Width = 139;
+            gridViewTextBoxColumn4.Width = 137;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "PhoneNumber";
-            gridViewTextBoxColumn5.HeaderText = "PhoneNumber";
+            gridViewTextBoxColumn5.HeaderText = "رقم الهاتف";
             gridViewTextBoxColumn5.IsAutoGenerated = true;
             gridViewTextBoxColumn5.Name = "PhoneNumber";
-            gridViewTextBoxColumn5.Width = 139;
+            gridViewTextBoxColumn5.Width = 137;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
             gridViewTextBoxColumn6.FieldName = "Mobilenumber";
-            gridViewTextBoxColumn6.HeaderText = "Mobilenumber";
+            gridViewTextBoxColumn6.HeaderText = "رقم المحمول";
             gridViewTextBoxColumn6.IsAutoGenerated = true;
             gridViewTextBoxColumn6.Name = "Mobilenumber";
-            gridViewTextBoxColumn6.Width = 139;
+            gridViewTextBoxColumn6.Width = 137;
             gridViewTextBoxColumn7.EnableExpressionEditor = false;
             gridViewTextBoxColumn7.FieldName = "Email";
-            gridViewTextBoxColumn7.HeaderText = "Email";
+            gridViewTextBoxColumn7.HeaderText = "البريد الالكتروني";
             gridViewTextBoxColumn7.IsAutoGenerated = true;
             gridViewTextBoxColumn7.Name = "Email";
-            gridViewTextBoxColumn7.Width = 140;
+            gridViewTextBoxColumn7.Width = 135;
             gridViewTextBoxColumn8.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.Contract>);
             gridViewTextBoxColumn8.EnableExpressionEditor = false;
             gridViewTextBoxColumn8.FieldName = "Contracts";
@@ -373,9 +381,12 @@
             gridViewTextBoxColumn7,
             gridViewTextBoxColumn8});
             this.employeeRadGridView.MasterTemplate.DataSource = this.employeeBindingSource;
+            this.employeeRadGridView.MasterTemplate.EnableFiltering = true;
+            this.employeeRadGridView.MasterTemplate.Templates.AddRange(new Telerik.WinControls.UI.GridViewTemplate[] {
+            this.gridViewTemplate1});
             this.employeeRadGridView.Name = "employeeRadGridView";
             this.employeeRadGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.employeeRadGridView.Size = new System.Drawing.Size(1124, 335);
+            this.employeeRadGridView.Size = new System.Drawing.Size(1124, 239);
             this.employeeRadGridView.TabIndex = 3;
             this.employeeRadGridView.Text = "radGridView1";
             this.employeeRadGridView.ThemeName = "VisualStudio2012Light";
@@ -389,46 +400,76 @@
             this.btnDel});
             this.employeecontextMenuStrip.Name = "employeecontextMenuStrip";
             this.employeecontextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.employeecontextMenuStrip.Size = new System.Drawing.Size(154, 114);
+            this.employeecontextMenuStrip.Size = new System.Drawing.Size(150, 92);
             // 
             // btnNew
             // 
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(153, 22);
+            this.btnNew.Size = new System.Drawing.Size(149, 22);
             this.btnNew.Text = "جديد     Ctrl+N";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 22);
+            this.btnSave.Size = new System.Drawing.Size(149, 22);
             this.btnSave.Text = "حفظ     Ctrl+S";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btrEdit
             // 
             this.btrEdit.Name = "btrEdit";
-            this.btrEdit.Size = new System.Drawing.Size(153, 22);
+            this.btrEdit.Size = new System.Drawing.Size(149, 22);
             this.btrEdit.Text = "تعديل     Ctrl+U";
+            this.btrEdit.Click += new System.EventHandler(this.btrEdit_Click);
             // 
             // btnDel
             // 
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(153, 22);
+            this.btnDel.Size = new System.Drawing.Size(149, 22);
             this.btnDel.Text = "حذف     Ctrl+D";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // gridViewTemplate1
+            // 
+            gridViewDecimalColumn2.DataType = typeof(int);
+            gridViewDecimalColumn2.EnableExpressionEditor = false;
+            gridViewDecimalColumn2.FieldName = "Count";
+            gridViewDecimalColumn2.HeaderText = "Count";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.Name = "Count";
+            gridViewDecimalColumn2.ReadOnly = true;
+            gridViewCheckBoxColumn1.EnableExpressionEditor = false;
+            gridViewCheckBoxColumn1.FieldName = "IsReadOnly";
+            gridViewCheckBoxColumn1.HeaderText = "IsReadOnly";
+            gridViewCheckBoxColumn1.IsAutoGenerated = true;
+            gridViewCheckBoxColumn1.MinWidth = 20;
+            gridViewCheckBoxColumn1.Name = "IsReadOnly";
+            gridViewCheckBoxColumn1.ReadOnly = true;
+            this.gridViewTemplate1.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            gridViewDecimalColumn2,
+            gridViewCheckBoxColumn1});
+            this.gridViewTemplate1.DataMember = "Contracts";
+            this.gridViewTemplate1.DataSource = this.employeeBindingSource;
             // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 559);
+            this.ClientSize = new System.Drawing.Size(1124, 499);
             this.ContextMenuStrip = this.employeecontextMenuStrip;
             this.Controls.Add(this.employeeRadGridView);
             this.Controls.Add(this.radCollapsiblePanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1140, 537);
+            this.MinimumSize = new System.Drawing.Size(1140, 537);
             this.Name = "frmEmployee";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Text = "frmEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "الموظفين";
+            this.Load += new System.EventHandler(this.frmEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userSystemBindingSource)).EndInit();
             this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);
             this.radCollapsiblePanel1.PanelContainer.PerformLayout();
@@ -437,6 +478,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeRadGridView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeRadGridView)).EndInit();
             this.employeecontextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTemplate1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +506,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnSave;
         private System.Windows.Forms.ToolStripMenuItem btrEdit;
         private System.Windows.Forms.ToolStripMenuItem btnDel;
+        private Telerik.WinControls.UI.GridViewTemplate gridViewTemplate1;
     }
 }

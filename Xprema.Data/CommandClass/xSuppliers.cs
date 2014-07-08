@@ -56,15 +56,15 @@ namespace Xprema.Data.CommandClass
 
 
 
-       public bool DeleteSupplier(Supplier sp)
+       public bool DeleteSupplier(int ID)
        {
            try
            {
-               var tb = db.Suppliers.Where(p => p.ID == sp.ID).SingleOrDefault();
+               var tb = db.Suppliers.Where(p => p.ID == ID).SingleOrDefault();
                if (tb.ID != null)
                {
 
-                   db.Suppliers.Remove(sp); 
+                   db.Suppliers.Remove(tb); 
                    db.SaveChanges();
                    return true;
 

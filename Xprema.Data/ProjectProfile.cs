@@ -21,6 +21,7 @@ namespace Xprema.Data
             this.ProjectActivities = new HashSet<ProjectActivity>();
             this.Thefinanciers = new HashSet<Thefinancier>();
             this.Accounts = new HashSet<Account>();
+            this.ProjectOrders = new HashSet<ProjectOrder>();
         }
     
         public int ID { get; set; }
@@ -37,5 +38,6 @@ namespace Xprema.Data
         public virtual ICollection<ProjectActivity> ProjectActivities { get; set; }
         public virtual ICollection<Thefinancier> Thefinanciers { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<ProjectOrder> ProjectOrders { get; set; }
     }
 }

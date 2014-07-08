@@ -30,5 +30,6 @@ namespace Xprema.Data
     
         public virtual ProjectActivity ProjectActivity { get; set; }
         public virtual ICollection<ProjectExpens> ProjectExpens { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

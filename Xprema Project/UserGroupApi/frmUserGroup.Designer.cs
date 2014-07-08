@@ -32,11 +32,12 @@
             System.Windows.Forms.Label groupDescriptionLabel;
             System.Windows.Forms.Label groupNameLabel;
             System.Windows.Forms.Label idLabel;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
             this.PermessioncheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,31 +68,31 @@
             // 
             groupDescriptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             groupDescriptionLabel.AutoSize = true;
-            groupDescriptionLabel.Location = new System.Drawing.Point(695, 122);
+            groupDescriptionLabel.Location = new System.Drawing.Point(682, 87);
             groupDescriptionLabel.Name = "groupDescriptionLabel";
-            groupDescriptionLabel.Size = new System.Drawing.Size(105, 13);
+            groupDescriptionLabel.Size = new System.Drawing.Size(30, 13);
             groupDescriptionLabel.TabIndex = 1;
-            groupDescriptionLabel.Text = "Group Description:";
+            groupDescriptionLabel.Text = "وصف";
             // 
             // groupNameLabel
             // 
             groupNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             groupNameLabel.AutoSize = true;
-            groupNameLabel.Location = new System.Drawing.Point(695, 78);
+            groupNameLabel.Location = new System.Drawing.Point(682, 61);
             groupNameLabel.Name = "groupNameLabel";
-            groupNameLabel.Size = new System.Drawing.Size(75, 13);
+            groupNameLabel.Size = new System.Drawing.Size(58, 13);
             groupNameLabel.TabIndex = 3;
-            groupNameLabel.Text = "Group Name:";
+            groupNameLabel.Text = "اسم المجموعة";
             // 
             // idLabel
             // 
             idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(695, 32);
+            idLabel.Location = new System.Drawing.Point(682, 35);
             idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(20, 13);
+            idLabel.Size = new System.Drawing.Size(56, 13);
             idLabel.TabIndex = 5;
-            idLabel.Text = "Id:";
+            idLabel.Text = "رقم المجموعة";
             // 
             // PermessioncheckedListBox
             // 
@@ -111,32 +112,32 @@
             this.btnDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 92);
             // 
             // btnNew
             // 
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(153, 22);
+            this.btnNew.Size = new System.Drawing.Size(149, 22);
             this.btnNew.Text = "جديد     Ctrl+N";
             // 
             // btnSave
             // 
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 22);
+            this.btnSave.Size = new System.Drawing.Size(149, 22);
             this.btnSave.Text = "حفظ     Ctrl+S";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(153, 22);
+            this.btnEdit.Size = new System.Drawing.Size(149, 22);
             this.btnEdit.Text = "تعديل     Ctrl+U";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(153, 22);
+            this.btnDelete.Size = new System.Drawing.Size(149, 22);
             this.btnDelete.Text = "حذف     Ctrl+D";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -184,9 +185,10 @@
             // 
             this.groupDescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userGroupBindingSource, "GroupDescription", true));
-            this.groupDescriptionTextBox.Location = new System.Drawing.Point(488, 119);
+            this.groupDescriptionTextBox.Location = new System.Drawing.Point(488, 84);
+            this.groupDescriptionTextBox.Multiline = true;
             this.groupDescriptionTextBox.Name = "groupDescriptionTextBox";
-            this.groupDescriptionTextBox.Size = new System.Drawing.Size(188, 20);
+            this.groupDescriptionTextBox.Size = new System.Drawing.Size(188, 55);
             this.groupDescriptionTextBox.TabIndex = 2;
             // 
             // userGroupBindingSource
@@ -197,7 +199,7 @@
             // 
             this.groupNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userGroupBindingSource, "GroupName", true));
-            this.groupNameTextBox.Location = new System.Drawing.Point(488, 78);
+            this.groupNameTextBox.Location = new System.Drawing.Point(488, 58);
             this.groupNameTextBox.Name = "groupNameTextBox";
             this.groupNameTextBox.Size = new System.Drawing.Size(188, 20);
             this.groupNameTextBox.TabIndex = 4;
@@ -208,6 +210,7 @@
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userGroupBindingSource, "Id", true));
             this.idTextBox.Location = new System.Drawing.Point(488, 32);
             this.idTextBox.Name = "idTextBox";
+            this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(188, 20);
             this.idTextBox.TabIndex = 6;
             // 
@@ -224,48 +227,53 @@
             // userGroupRadGridView
             // 
             this.userGroupRadGridView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn1.DataType = typeof(int);
-            gridViewDecimalColumn1.EnableExpressionEditor = false;
-            gridViewDecimalColumn1.FieldName = "Id";
-            gridViewDecimalColumn1.HeaderText = "Id";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.Name = "Id";
-            gridViewDecimalColumn1.Width = 266;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "GroupName";
-            gridViewTextBoxColumn1.HeaderText = "GroupName";
-            gridViewTextBoxColumn1.IsAutoGenerated = true;
-            gridViewTextBoxColumn1.Name = "GroupName";
-            gridViewTextBoxColumn1.Width = 266;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "GroupDescription";
-            gridViewTextBoxColumn2.HeaderText = "GroupDescription";
-            gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.Name = "GroupDescription";
-            gridViewTextBoxColumn2.Width = 267;
-            gridViewTextBoxColumn3.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.UserSystem>);
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "UserSystems";
-            gridViewTextBoxColumn3.HeaderText = "UserSystems";
-            gridViewTextBoxColumn3.IsAutoGenerated = true;
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "UserSystems";
-            gridViewTextBoxColumn3.Width = 121;
-            gridViewTextBoxColumn4.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.GroupPermession>);
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "GroupPermessions";
-            gridViewTextBoxColumn4.HeaderText = "GroupPermessions";
-            gridViewTextBoxColumn4.IsAutoGenerated = true;
-            gridViewTextBoxColumn4.IsVisible = false;
-            gridViewTextBoxColumn4.Name = "GroupPermessions";
-            gridViewTextBoxColumn4.Width = 152;
+            gridViewDecimalColumn2.DataType = typeof(int);
+            gridViewDecimalColumn2.EnableExpressionEditor = false;
+            gridViewDecimalColumn2.FieldName = "Id";
+            gridViewDecimalColumn2.HeaderText = "رقم المجموعة";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.Name = "Id";
+            gridViewDecimalColumn2.Width = 266;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "GroupName";
+            gridViewTextBoxColumn5.HeaderText = "اسم المجموعة";
+            gridViewTextBoxColumn5.IsAutoGenerated = true;
+            gridViewTextBoxColumn5.Name = "GroupName";
+            gridViewTextBoxColumn5.Width = 266;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "GroupDescription";
+            gridViewTextBoxColumn6.HeaderText = "وصف";
+            gridViewTextBoxColumn6.IsAutoGenerated = true;
+            gridViewTextBoxColumn6.Name = "GroupDescription";
+            gridViewTextBoxColumn6.SortOrder = Telerik.WinControls.UI.RadSortOrder.Descending;
+            gridViewTextBoxColumn6.Width = 267;
+            gridViewTextBoxColumn7.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.UserSystem>);
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.FieldName = "UserSystems";
+            gridViewTextBoxColumn7.HeaderText = "UserSystems";
+            gridViewTextBoxColumn7.IsAutoGenerated = true;
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "UserSystems";
+            gridViewTextBoxColumn7.Width = 121;
+            gridViewTextBoxColumn8.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.GroupPermession>);
+            gridViewTextBoxColumn8.EnableExpressionEditor = false;
+            gridViewTextBoxColumn8.FieldName = "GroupPermessions";
+            gridViewTextBoxColumn8.HeaderText = "GroupPermessions";
+            gridViewTextBoxColumn8.IsAutoGenerated = true;
+            gridViewTextBoxColumn8.IsVisible = false;
+            gridViewTextBoxColumn8.Name = "GroupPermessions";
+            gridViewTextBoxColumn8.Width = 152;
             this.userGroupRadGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn1,
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4});
+            gridViewDecimalColumn2,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8});
             this.userGroupRadGridView.MasterTemplate.DataSource = this.userGroupBindingSource;
+            sortDescriptor2.Direction = System.ComponentModel.ListSortDirection.Descending;
+            sortDescriptor2.PropertyName = "GroupDescription";
+            this.userGroupRadGridView.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
+            sortDescriptor2});
             this.userGroupRadGridView.Name = "userGroupRadGridView";
             this.userGroupRadGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.userGroupRadGridView.Size = new System.Drawing.Size(815, 366);
@@ -284,10 +292,13 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(831, 640);
+            this.MinimumSize = new System.Drawing.Size(831, 640);
             this.Name = "frmUserGroup";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.Text = "frmUserGroup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "المجموعات";
             this.Load += new System.EventHandler(this.frmUserGroup_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);

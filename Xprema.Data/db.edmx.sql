@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/05/2014 14:53:06
--- Generated from EDMX file: C:\Users\Heroo\Documents\GitHub\xpremaXpro\Xprema.Data\db.edmx
+-- Date Created: 07/07/2014 12:32:46
+-- Generated from EDMX file: D:\Systems\Xprema systems\projectmanagement\xpremaXpro\xpremaXpro\Xprema.Data\db.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -47,9 +47,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivityProjectSubActivity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectSubActivities] DROP CONSTRAINT [FK_ProjectActivityProjectSubActivity];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProjectActivityAccount]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts] DROP CONSTRAINT [FK_ProjectActivityAccount];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectSubActivityProjectExpens]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectExpenses] DROP CONSTRAINT [FK_ProjectSubActivityProjectExpens];
 GO
@@ -67,6 +64,21 @@ IF OBJECT_ID(N'[dbo].[FK_ProjectProfileAccount]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserSystemContract]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Contracts] DROP CONSTRAINT [FK_UserSystemContract];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProjectProfileProjectOrder]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectOrders] DROP CONSTRAINT [FK_ProjectProfileProjectOrder];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountProjectActivity]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectActivities] DROP CONSTRAINT [FK_AccountProjectActivity];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountProjectSubActivity]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectSubActivities] DROP CONSTRAINT [FK_AccountProjectSubActivity];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountProjectExpens]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectExpenses] DROP CONSTRAINT [FK_AccountProjectExpens];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountProjectActivity1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectActivities] DROP CONSTRAINT [FK_AccountProjectActivity1];
 GO
 
 -- --------------------------------------------------
@@ -211,7 +223,9 @@ CREATE TABLE [dbo].[ProjectActivities] (
     [Status] nvarchar(max)  NULL,
     [Progress] int  NOT NULL,
     [TotalCost] float  NOT NULL,
-    [ProjectProfile_ID] int  NOT NULL
+    [ProjectProfile_ID] int  NOT NULL,
+    [Account_ID] int  NOT NULL,
+    [Account1_ID] int  NOT NULL
 );
 GO
 
@@ -223,7 +237,8 @@ CREATE TABLE [dbo].[ProjectExpenses] (
     [BillNumber] nvarchar(max)  NULL,
     [RequiarAmount] float  NOT NULL,
     [CashingNumber] nvarchar(max)  NULL,
-    [ProjectSubActivity_ID] int  NOT NULL
+    [ProjectSubActivity_ID] int  NOT NULL,
+    [Account_ID] int  NOT NULL
 );
 GO
 
@@ -232,7 +247,8 @@ CREATE TABLE [dbo].[ProjectOrders] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [OrderTitle] nvarchar(max)  NULL,
     [OrderBody] nvarchar(max)  NULL,
-    [OrderDate] datetime  NOT NULL
+    [OrderDate] datetime  NOT NULL,
+    [ProjectProfile_ID] int  NOT NULL
 );
 GO
 
@@ -259,7 +275,8 @@ CREATE TABLE [dbo].[ProjectSubActivities] (
     [Status] nvarchar(max)  NULL,
     [Persentage] int  NOT NULL,
     [TotalCost] nvarchar(max)  NOT NULL,
-    [ProjectActivity_ID] int  NOT NULL
+    [ProjectActivity_ID] int  NOT NULL,
+    [Account_ID] int  NOT NULL
 );
 GO
 
@@ -309,7 +326,6 @@ CREATE TABLE [dbo].[Accounts] (
     [Coin] nvarchar(max)  NULL,
     [AccountNatural] nvarchar(max)  NULL,
     [Contract_ID] int  NULL,
-    [ProjectActivity_ID] int  NOT NULL,
     [ProjectProfile_ID] int  NOT NULL
 );
 GO
@@ -575,20 +591,6 @@ ON [dbo].[ProjectSubActivities]
     ([ProjectActivity_ID]);
 GO
 
--- Creating foreign key on [ProjectActivity_ID] in table 'Accounts'
-ALTER TABLE [dbo].[Accounts]
-ADD CONSTRAINT [FK_ProjectActivityAccount]
-    FOREIGN KEY ([ProjectActivity_ID])
-    REFERENCES [dbo].[ProjectActivities]
-        ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProjectActivityAccount'
-CREATE INDEX [IX_FK_ProjectActivityAccount]
-ON [dbo].[Accounts]
-    ([ProjectActivity_ID]);
-GO
-
 -- Creating foreign key on [ProjectSubActivity_ID] in table 'ProjectExpenses'
 ALTER TABLE [dbo].[ProjectExpenses]
 ADD CONSTRAINT [FK_ProjectSubActivityProjectExpens]
@@ -671,6 +673,76 @@ ADD CONSTRAINT [FK_UserSystemContract]
 CREATE INDEX [IX_FK_UserSystemContract]
 ON [dbo].[Contracts]
     ([UserSystem_Id]);
+GO
+
+-- Creating foreign key on [ProjectProfile_ID] in table 'ProjectOrders'
+ALTER TABLE [dbo].[ProjectOrders]
+ADD CONSTRAINT [FK_ProjectProfileProjectOrder]
+    FOREIGN KEY ([ProjectProfile_ID])
+    REFERENCES [dbo].[ProjectProfiles]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileProjectOrder'
+CREATE INDEX [IX_FK_ProjectProfileProjectOrder]
+ON [dbo].[ProjectOrders]
+    ([ProjectProfile_ID]);
+GO
+
+-- Creating foreign key on [Account_ID] in table 'ProjectActivities'
+ALTER TABLE [dbo].[ProjectActivities]
+ADD CONSTRAINT [FK_AccountProjectActivity]
+    FOREIGN KEY ([Account_ID])
+    REFERENCES [dbo].[Accounts]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectActivity'
+CREATE INDEX [IX_FK_AccountProjectActivity]
+ON [dbo].[ProjectActivities]
+    ([Account_ID]);
+GO
+
+-- Creating foreign key on [Account_ID] in table 'ProjectSubActivities'
+ALTER TABLE [dbo].[ProjectSubActivities]
+ADD CONSTRAINT [FK_AccountProjectSubActivity]
+    FOREIGN KEY ([Account_ID])
+    REFERENCES [dbo].[Accounts]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectSubActivity'
+CREATE INDEX [IX_FK_AccountProjectSubActivity]
+ON [dbo].[ProjectSubActivities]
+    ([Account_ID]);
+GO
+
+-- Creating foreign key on [Account_ID] in table 'ProjectExpenses'
+ALTER TABLE [dbo].[ProjectExpenses]
+ADD CONSTRAINT [FK_AccountProjectExpens]
+    FOREIGN KEY ([Account_ID])
+    REFERENCES [dbo].[Accounts]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectExpens'
+CREATE INDEX [IX_FK_AccountProjectExpens]
+ON [dbo].[ProjectExpenses]
+    ([Account_ID]);
+GO
+
+-- Creating foreign key on [Account1_ID] in table 'ProjectActivities'
+ALTER TABLE [dbo].[ProjectActivities]
+ADD CONSTRAINT [FK_AccountProjectActivity1]
+    FOREIGN KEY ([Account1_ID])
+    REFERENCES [dbo].[Accounts]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectActivity1'
+CREATE INDEX [IX_FK_AccountProjectActivity1]
+ON [dbo].[ProjectActivities]
+    ([Account1_ID]);
 GO
 
 -- --------------------------------------------------

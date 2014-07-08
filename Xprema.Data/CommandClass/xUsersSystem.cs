@@ -15,6 +15,7 @@ namespace Xprema.Data.CommandClass
         {
             try
             {
+      
                 db.UserSystems.Add(Usr);
                 db.SaveChanges();
                 return true;
@@ -72,14 +73,14 @@ namespace Xprema.Data.CommandClass
         }
 
 
-        public bool DeleteUser(UserSystem Usr)
+        public bool DeleteUser(int UsrID)
         {
             try
             {
-                var U = db.UserSystems.Where(p => p.Id == Usr.Id).SingleOrDefault();
+                var U = db.UserSystems.Where(p => p.Id == UsrID).SingleOrDefault();
                 if (U.Id != null)
                 {
-                    db.UserSystems.Remove(Usr);
+                    db.UserSystems.Remove(U);
                     db.SaveChanges();
                     return true;
 

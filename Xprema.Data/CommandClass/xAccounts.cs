@@ -37,7 +37,7 @@ namespace Xprema.Data.CommandClass
                     tb.AccountDescription = act.AccountDescription;
                     tb.AccountNatural = act.AccountNatural;
                     tb.Coin = act.Coin;
-                    tb.ProjectActivity = act.ProjectActivity;
+                 //   tb.ProjectActivity = act.ProjectActivity;
                     tb.ProjectProfile = act.ProjectProfile; 
                   //  tb.ProjectSubActivity = act.ProjectSubActivity;
                     tb.Contract = act.Contract;

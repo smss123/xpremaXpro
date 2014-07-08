@@ -63,10 +63,6 @@
       <End Role="ProjectActivity" EntitySet="ProjectActivities" />
       <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
     </AssociationSet>
-    <AssociationSet Name="ProjectActivityAccount" Association="db.Store.ProjectActivityAccount">
-      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
-      <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
     <AssociationSet Name="ProjectSubActivityProjectExpens" Association="db.Store.ProjectSubActivityProjectExpens">
       <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
       <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
@@ -90,6 +86,26 @@
     <AssociationSet Name="UserSystemContract" Association="db.Store.UserSystemContract">
       <End Role="UserSystem" EntitySet="UserSystems" />
       <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProfileProjectOrder" Association="db.Store.ProjectProfileProjectOrder">
+      <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+      <End Role="ProjectOrder" EntitySet="ProjectOrders" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProjectActivity" Association="db.Store.AccountProjectActivity">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProjectSubActivity" Association="db.Store.AccountProjectSubActivity">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProjectExpens" Association="db.Store.AccountProjectExpens">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProjectActivity1" Association="db.Store.AccountProjectActivity1">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ProjectActivity" EntitySet="ProjectActivities" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserGroups">
@@ -177,6 +193,8 @@
     <Property Name="Progress" Type="int" Nullable="false" />
     <Property Name="TotalCost" Type="float" Nullable="false" />
     <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
+    <Property Name="Account_ID" Type="int" Nullable="false" />
+    <Property Name="Account1_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectExpenses">
     <Key>
@@ -189,6 +207,7 @@
     <Property Name="RequiarAmount" Type="float" Nullable="false" />
     <Property Name="CashingNumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ProjectSubActivity_ID" Type="int" Nullable="false" />
+    <Property Name="Account_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectOrders">
     <Key>
@@ -198,6 +217,7 @@
     <Property Name="OrderTitle" Type="nvarchar(max)" Nullable="true" />
     <Property Name="OrderBody" Type="nvarchar(max)" Nullable="true" />
     <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectProfiles">
     <Key>
@@ -225,6 +245,7 @@
     <Property Name="Persentage" Type="int" Nullable="false" />
     <Property Name="TotalCost" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ProjectActivity_ID" Type="int" Nullable="false" />
+    <Property Name="Account_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Thefinanciers">
     <Key>
@@ -274,7 +295,6 @@
     <Property Name="Coin" Type="nvarchar(max)" Nullable="true" />
     <Property Name="AccountNatural" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Contract_ID" Type="int" Nullable="true" />
-    <Property Name="ProjectActivity_ID" Type="int" Nullable="false" />
     <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DailyMovemnts">
@@ -410,18 +430,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProjectActivityAccount">
-    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="1" />
-    <End Role="Account" Type="db.Store.Accounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProjectActivity">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="ProjectActivity_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ProjectSubActivityProjectExpens">
     <End Role="ProjectSubActivity" Type="db.Store.ProjectSubActivities" Multiplicity="1" />
     <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="*" />
@@ -494,6 +502,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProjectProfileProjectOrder">
+    <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
+    <End Role="ProjectOrder" Type="db.Store.ProjectOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectProfile">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectOrder">
+        <PropertyRef Name="ProjectProfile_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProjectActivity">
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="1" />
+    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectActivity">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProjectSubActivity">
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="1" />
+    <End Role="ProjectSubActivity" Type="db.Store.ProjectSubActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectSubActivity">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProjectExpens">
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="1" />
+    <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectExpens">
+        <PropertyRef Name="Account_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProjectActivity1">
+    <End Role="Account" Type="db.Store.Accounts" Multiplicity="1" />
+    <End Role="ProjectActivity" Type="db.Store.ProjectActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectActivity">
+        <PropertyRef Name="Account1_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -556,10 +624,6 @@
             <End Role="ProjectActivity" EntitySet="ProjectActivities" />
             <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
           </AssociationSet>
-          <AssociationSet Name="ProjectActivityAccount" Association="db.ProjectActivityAccount">
-            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
-            <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
           <AssociationSet Name="ProjectSubActivityProjectExpens" Association="db.ProjectSubActivityProjectExpens">
             <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
             <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
@@ -583,6 +647,26 @@
           <AssociationSet Name="UserSystemContract" Association="db.UserSystemContract">
             <End Role="UserSystem" EntitySet="UserSystems" />
             <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProfileProjectOrder" Association="db.ProjectProfileProjectOrder">
+            <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
+            <End Role="ProjectOrder" EntitySet="ProjectOrders" />
+          </AssociationSet>
+          <AssociationSet Name="AccountProjectActivity" Association="db.AccountProjectActivity">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+          </AssociationSet>
+          <AssociationSet Name="AccountProjectSubActivity" Association="db.AccountProjectSubActivity">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
+          </AssociationSet>
+          <AssociationSet Name="AccountProjectExpens" Association="db.AccountProjectExpens">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="AccountProjectActivity1" Association="db.AccountProjectActivity1">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="ProjectActivity" EntitySet="ProjectActivities" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserGroup">
@@ -692,7 +776,8 @@
           <Property Name="TotalCost" Type="Double" Nullable="false" />
           <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileProjectActivity" FromRole="ProjectActivity" ToRole="ProjectProfile" />
           <NavigationProperty Name="ProjectSubActivities" Relationship="db.ProjectActivityProjectSubActivity" FromRole="ProjectActivity" ToRole="ProjectSubActivity" />
-          <NavigationProperty Name="Accounts" Relationship="db.ProjectActivityAccount" FromRole="ProjectActivity" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="db.AccountProjectActivity" FromRole="ProjectActivity" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="db.AccountProjectActivity1" FromRole="ProjectActivity" ToRole="Account" />
         </EntityType>
         <EntityType Name="ProjectExpens">
           <Key>
@@ -706,6 +791,7 @@
           <Property Name="CashingNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectSubActivity" Relationship="db.ProjectSubActivityProjectExpens" FromRole="ProjectExpens" ToRole="ProjectSubActivity" />
           <NavigationProperty Name="Suppliers" Relationship="db.ProjectExpensSupplier" FromRole="ProjectExpens" ToRole="Supplier" />
+          <NavigationProperty Name="Account" Relationship="db.AccountProjectExpens" FromRole="ProjectExpens" ToRole="Account" />
         </EntityType>
         <EntityType Name="ProjectOrder">
           <Key>
@@ -716,6 +802,7 @@
           <Property Name="OrderBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Attachments" Relationship="db.ProjectOrderAttachment" FromRole="ProjectOrder" ToRole="Attachment" />
+          <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileProjectOrder" FromRole="ProjectOrder" ToRole="ProjectProfile" />
         </EntityType>
         <EntityType Name="ProjectProfile">
           <Key>
@@ -734,6 +821,7 @@
           <NavigationProperty Name="ProjectActivities" Relationship="db.ProjectProfileProjectActivity" FromRole="ProjectProfile" ToRole="ProjectActivity" />
           <NavigationProperty Name="Thefinanciers" Relationship="db.ProjectProfileThefinancier" FromRole="ProjectProfile" ToRole="Thefinancier" />
           <NavigationProperty Name="Accounts" Relationship="db.ProjectProfileAccount" FromRole="ProjectProfile" ToRole="Account" />
+          <NavigationProperty Name="ProjectOrders" Relationship="db.ProjectProfileProjectOrder" FromRole="ProjectProfile" ToRole="ProjectOrder" />
         </EntityType>
         <EntityType Name="ProjectSubActivity">
           <Key>
@@ -749,6 +837,7 @@
           <Property Name="TotalCost" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectActivity" Relationship="db.ProjectActivityProjectSubActivity" FromRole="ProjectSubActivity" ToRole="ProjectActivity" />
           <NavigationProperty Name="ProjectExpens" Relationship="db.ProjectSubActivityProjectExpens" FromRole="ProjectSubActivity" ToRole="ProjectExpens" />
+          <NavigationProperty Name="Account" Relationship="db.AccountProjectSubActivity" FromRole="ProjectSubActivity" ToRole="Account" />
         </EntityType>
         <EntityType Name="Thefinancier">
           <Key>
@@ -798,9 +887,12 @@
           <Property Name="Coin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AccountNatural" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contract" Relationship="db.ContractAccount" FromRole="Account" ToRole="Contract" />
-          <NavigationProperty Name="ProjectActivity" Relationship="db.ProjectActivityAccount" FromRole="Account" ToRole="ProjectActivity" />
           <NavigationProperty Name="Transactions" Relationship="db.AccountTransaction" FromRole="Account" ToRole="Transaction" />
           <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileAccount" FromRole="Account" ToRole="ProjectProfile" />
+          <NavigationProperty Name="ProjectActivities" Relationship="db.AccountProjectActivity" FromRole="Account" ToRole="ProjectActivity" />
+          <NavigationProperty Name="ProjectSubActivities" Relationship="db.AccountProjectSubActivity" FromRole="Account" ToRole="ProjectSubActivity" />
+          <NavigationProperty Name="ProjectExpens" Relationship="db.AccountProjectExpens" FromRole="Account" ToRole="ProjectExpens" />
+          <NavigationProperty Name="ProjectActivities1" Relationship="db.AccountProjectActivity1" FromRole="Account" ToRole="ProjectActivity" />
         </EntityType>
         <EntityType Name="DailyMovemnt">
           <Key>
@@ -841,10 +933,6 @@
           <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="1" />
           <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="*" />
         </Association>
-        <Association Name="ProjectActivityAccount">
-          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="1" />
-          <End Type="db.Account" Role="Account" Multiplicity="*" />
-        </Association>
         <Association Name="ProjectSubActivityProjectExpens">
           <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="1" />
           <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
@@ -868,6 +956,26 @@
         <Association Name="UserSystemContract">
           <End Type="db.UserSystem" Role="UserSystem" Multiplicity="1" />
           <End Type="db.Contract" Role="Contract" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectProfileProjectOrder">
+          <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
+          <End Type="db.ProjectOrder" Role="ProjectOrder" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountProjectActivity">
+          <End Type="db.Account" Role="Account" Multiplicity="1" />
+          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountProjectSubActivity">
+          <End Type="db.Account" Role="Account" Multiplicity="1" />
+          <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountProjectExpens">
+          <End Type="db.Account" Role="Account" Multiplicity="1" />
+          <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountProjectActivity1">
+          <End Type="db.Account" Role="Account" Multiplicity="1" />
+          <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1152,14 +1260,6 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ProjectActivityAccount" TypeName="db.ProjectActivityAccount" StoreEntitySet="Accounts">
-      <EndProperty Name="ProjectActivity">
-        <ScalarProperty Name="ID" ColumnName="ProjectActivity_ID" />
-      </EndProperty>
-      <EndProperty Name="Account">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ProjectSubActivityProjectExpens" TypeName="db.ProjectSubActivityProjectExpens" StoreEntitySet="ProjectExpenses">
       <EndProperty Name="ProjectSubActivity">
         <ScalarProperty Name="ID" ColumnName="ProjectSubActivity_ID" />
@@ -1205,6 +1305,46 @@
         <ScalarProperty Name="Id" ColumnName="UserSystem_Id" />
       </EndProperty>
       <EndProperty Name="Contract">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectProfileProjectOrder" TypeName="db.ProjectProfileProjectOrder" StoreEntitySet="ProjectOrders">
+      <EndProperty Name="ProjectProfile">
+        <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectOrder">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountProjectActivity" TypeName="db.AccountProjectActivity" StoreEntitySet="ProjectActivities">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="Account_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectActivity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountProjectSubActivity" TypeName="db.AccountProjectSubActivity" StoreEntitySet="ProjectSubActivities">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="Account_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectSubActivity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountProjectExpens" TypeName="db.AccountProjectExpens" StoreEntitySet="ProjectExpenses">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="Account_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectExpens">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AccountProjectActivity1" TypeName="db.AccountProjectActivity1" StoreEntitySet="ProjectActivities">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="Account1_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectActivity">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
