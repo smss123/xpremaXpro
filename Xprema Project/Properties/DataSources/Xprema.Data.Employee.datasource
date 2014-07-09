@@ -7,36 +7,4 @@
 -->
 <GenericObjectDataSource DisplayName="Employee" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <TypeInfo>Xprema.Data.Employee, Xprema.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
-   <TypeUISetting>
-      <PropertyUISettings>
-         <PropertyUISetting Name="Email">
-            <ControlSettings>
-               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-               </ControlSetting>
-            </ControlSettings>
-         </PropertyUISetting>
-         <PropertyUISetting Name="EmployeeGender">
-            <ControlSettings>
-               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-               </ControlSetting>
-            </ControlSettings>
-         </PropertyUISetting>
-         <PropertyUISetting Name="EmployeejobNumber">
-            <ControlSettings>
-               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-               </ControlSetting>
-            </ControlSettings>
-         </PropertyUISetting>
-         <PropertyUISetting Name="EmployeeName">
-            <ControlSettings>
-               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-               </ControlSetting>
-            </ControlSettings>
-         </PropertyUISetting>
-      </PropertyUISettings>
-   </TypeUISetting>
 </GenericObjectDataSource>

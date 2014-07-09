@@ -67,10 +67,6 @@
       <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
       <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
     </AssociationSet>
-    <AssociationSet Name="ProjectExpensSupplier" Association="db.Store.ProjectExpensSupplier">
-      <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
-      <End Role="Supplier" EntitySet="Suppliers" />
-    </AssociationSet>
     <AssociationSet Name="ProjectProfileThefinancier" Association="db.Store.ProjectProfileThefinancier">
       <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
       <End Role="Thefinancier" EntitySet="Thefinanciers" />
@@ -82,10 +78,6 @@
     <AssociationSet Name="ProjectProfileAccount" Association="db.Store.ProjectProfileAccount">
       <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
       <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
-    <AssociationSet Name="UserSystemContract" Association="db.Store.UserSystemContract">
-      <End Role="UserSystem" EntitySet="UserSystems" />
-      <End Role="Contract" EntitySet="Contracts" />
     </AssociationSet>
     <AssociationSet Name="ProjectProfileProjectOrder" Association="db.Store.ProjectProfileProjectOrder">
       <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
@@ -106,6 +98,14 @@
     <AssociationSet Name="AccountProjectActivity1" Association="db.Store.AccountProjectActivity1">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="ProjectActivity" EntitySet="ProjectActivities" />
+    </AssociationSet>
+    <AssociationSet Name="SupplierProjectExpens" Association="db.Store.SupplierProjectExpens">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+    </AssociationSet>
+    <AssociationSet Name="UserSystemEmployee" Association="db.Store.UserSystemEmployee">
+      <End Role="UserSystem" EntitySet="UserSystems" />
+      <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserGroups">
@@ -165,7 +165,6 @@
     <Property Name="EmplyeeAccount_ID" Type="int" Nullable="true" />
     <Property Name="Employee_ID" Type="int" Nullable="false" />
     <Property Name="ProjectProfile_ID" Type="int" Nullable="false" />
-    <Property Name="UserSystem_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>
@@ -179,6 +178,7 @@
     <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Mobilenumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UserSystem_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectActivities">
     <Key>
@@ -208,6 +208,7 @@
     <Property Name="CashingNumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ProjectSubActivity_ID" Type="int" Nullable="false" />
     <Property Name="Account_ID" Type="int" Nullable="false" />
+    <Property Name="Supplier_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectOrders">
     <Key>
@@ -283,7 +284,6 @@
     <Property Name="Fax" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Adderss" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ProjectExpen_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Accounts">
     <Key>
@@ -442,18 +442,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProjectExpensSupplier">
-    <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="1" />
-    <End Role="Supplier" Type="db.Store.Suppliers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProjectExpens">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Supplier">
-        <PropertyRef Name="ProjectExpen_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ProjectProfileThefinancier">
     <End Role="ProjectProfile" Type="db.Store.ProjectProfiles" Multiplicity="1" />
     <End Role="Thefinancier" Type="db.Store.Thefinanciers" Multiplicity="*" />
@@ -487,18 +475,6 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="ProjectProfile_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserSystemContract">
-    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="1" />
-    <End Role="Contract" Type="db.Store.Contracts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserSystem">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Contract">
-        <PropertyRef Name="UserSystem_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -559,6 +535,30 @@
       </Principal>
       <Dependent Role="ProjectActivity">
         <PropertyRef Name="Account1_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SupplierProjectExpens">
+    <End Role="Supplier" Type="db.Store.Suppliers" Multiplicity="1" />
+    <End Role="ProjectExpens" Type="db.Store.ProjectExpenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectExpens">
+        <PropertyRef Name="Supplier_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSystemEmployee">
+    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="1" />
+    <End Role="Employee" Type="db.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSystem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserSystem_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -628,10 +628,6 @@
             <End Role="ProjectSubActivity" EntitySet="ProjectSubActivities" />
             <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
           </AssociationSet>
-          <AssociationSet Name="ProjectExpensSupplier" Association="db.ProjectExpensSupplier">
-            <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
           <AssociationSet Name="ProjectProfileThefinancier" Association="db.ProjectProfileThefinancier">
             <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
             <End Role="Thefinancier" EntitySet="Thefinanciers" />
@@ -643,10 +639,6 @@
           <AssociationSet Name="ProjectProfileAccount" Association="db.ProjectProfileAccount">
             <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
             <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
-          <AssociationSet Name="UserSystemContract" Association="db.UserSystemContract">
-            <End Role="UserSystem" EntitySet="UserSystems" />
-            <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
           <AssociationSet Name="ProjectProfileProjectOrder" Association="db.ProjectProfileProjectOrder">
             <End Role="ProjectProfile" EntitySet="ProjectProfiles" />
@@ -668,6 +660,14 @@
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ProjectActivity" EntitySet="ProjectActivities" />
           </AssociationSet>
+          <AssociationSet Name="SupplierProjectExpens" Association="db.SupplierProjectExpens">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="UserSystemEmployee" Association="db.UserSystemEmployee">
+            <End Role="UserSystem" EntitySet="UserSystems" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserGroup">
           <Key>
@@ -687,7 +687,7 @@
           <Property Type="String" Name="UserName" Nullable="false" />
           <Property Type="String" Name="Password" Nullable="false" />
           <NavigationProperty Name="UserGroup" Relationship="db.UserGroupUserSystem" FromRole="UserSystem" ToRole="UserGroup" />
-          <NavigationProperty Name="Contracts" Relationship="db.UserSystemContract" FromRole="UserSystem" ToRole="Contract" />
+          <NavigationProperty Name="Employees" Relationship="db.UserSystemEmployee" FromRole="UserSystem" ToRole="Employee" />
         </EntityType>
         <Association Name="UserGroupUserSystem">
           <End Type="db.UserGroup" Role="UserGroup" Multiplicity="1" />
@@ -746,7 +746,6 @@
           <NavigationProperty Name="Employee" Relationship="db.EmployeeContract" FromRole="Contract" ToRole="Employee" />
           <NavigationProperty Name="ProjectProfile" Relationship="db.ProjectProfileContract" FromRole="Contract" ToRole="ProjectProfile" />
           <NavigationProperty Name="Accounts" Relationship="db.ContractAccount" FromRole="Contract" ToRole="Account" />
-          <NavigationProperty Name="UserSystem" Relationship="db.UserSystemContract" FromRole="Contract" ToRole="UserSystem" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -761,6 +760,7 @@
           <Property Name="Mobilenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contracts" Relationship="db.EmployeeContract" FromRole="Employee" ToRole="Contract" />
+          <NavigationProperty Name="UserSystem" Relationship="db.UserSystemEmployee" FromRole="Employee" ToRole="UserSystem" />
         </EntityType>
         <EntityType Name="ProjectActivity">
           <Key>
@@ -790,8 +790,8 @@
           <Property Name="RequiarAmount" Type="Double" Nullable="false" />
           <Property Name="CashingNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectSubActivity" Relationship="db.ProjectSubActivityProjectExpens" FromRole="ProjectExpens" ToRole="ProjectSubActivity" />
-          <NavigationProperty Name="Suppliers" Relationship="db.ProjectExpensSupplier" FromRole="ProjectExpens" ToRole="Supplier" />
           <NavigationProperty Name="Account" Relationship="db.AccountProjectExpens" FromRole="ProjectExpens" ToRole="Account" />
+          <NavigationProperty Name="Supplier" Relationship="db.SupplierProjectExpens" FromRole="ProjectExpens" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="ProjectOrder">
           <Key>
@@ -875,7 +875,7 @@
           <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Adderss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProjectExpen" Relationship="db.ProjectExpensSupplier" FromRole="Supplier" ToRole="ProjectExpens" />
+          <NavigationProperty Name="ProjectExpens" Relationship="db.SupplierProjectExpens" FromRole="Supplier" ToRole="ProjectExpens" />
         </EntityType>
         <EntityType Name="Account">
           <Key>
@@ -937,10 +937,6 @@
           <End Type="db.ProjectSubActivity" Role="ProjectSubActivity" Multiplicity="1" />
           <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
         </Association>
-        <Association Name="ProjectExpensSupplier">
-          <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="1" />
-          <End Type="db.Supplier" Role="Supplier" Multiplicity="*" />
-        </Association>
         <Association Name="ProjectProfileThefinancier">
           <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
           <End Type="db.Thefinancier" Role="Thefinancier" Multiplicity="*" />
@@ -952,10 +948,6 @@
         <Association Name="ProjectProfileAccount">
           <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
           <End Type="db.Account" Role="Account" Multiplicity="*" />
-        </Association>
-        <Association Name="UserSystemContract">
-          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="1" />
-          <End Type="db.Contract" Role="Contract" Multiplicity="*" />
         </Association>
         <Association Name="ProjectProfileProjectOrder">
           <End Type="db.ProjectProfile" Role="ProjectProfile" Multiplicity="1" />
@@ -976,6 +968,14 @@
         <Association Name="AccountProjectActivity1">
           <End Type="db.Account" Role="Account" Multiplicity="1" />
           <End Type="db.ProjectActivity" Role="ProjectActivity" Multiplicity="*" />
+        </Association>
+        <Association Name="SupplierProjectExpens">
+          <End Type="db.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
+        </Association>
+        <Association Name="UserSystemEmployee">
+          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="1" />
+          <End Type="db.Employee" Role="Employee" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1268,14 +1268,6 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ProjectExpensSupplier" TypeName="db.ProjectExpensSupplier" StoreEntitySet="Suppliers">
-      <EndProperty Name="ProjectExpens">
-        <ScalarProperty Name="ID" ColumnName="ProjectExpen_ID" />
-      </EndProperty>
-      <EndProperty Name="Supplier">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ProjectProfileThefinancier" TypeName="db.ProjectProfileThefinancier" StoreEntitySet="Thefinanciers">
       <EndProperty Name="ProjectProfile">
         <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
@@ -1297,14 +1289,6 @@
         <ScalarProperty Name="ID" ColumnName="ProjectProfile_ID" />
       </EndProperty>
       <EndProperty Name="Account">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserSystemContract" TypeName="db.UserSystemContract" StoreEntitySet="Contracts">
-      <EndProperty Name="UserSystem">
-        <ScalarProperty Name="Id" ColumnName="UserSystem_Id" />
-      </EndProperty>
-      <EndProperty Name="Contract">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
@@ -1345,6 +1329,22 @@
         <ScalarProperty Name="ID" ColumnName="Account1_ID" />
       </EndProperty>
       <EndProperty Name="ProjectActivity">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SupplierProjectExpens" TypeName="db.SupplierProjectExpens" StoreEntitySet="ProjectExpenses">
+      <EndProperty Name="Supplier">
+        <ScalarProperty Name="ID" ColumnName="Supplier_ID" />
+      </EndProperty>
+      <EndProperty Name="ProjectExpens">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserSystemEmployee" TypeName="db.UserSystemEmployee" StoreEntitySet="Employees">
+      <EndProperty Name="UserSystem">
+        <ScalarProperty Name="Id" ColumnName="UserSystem_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>

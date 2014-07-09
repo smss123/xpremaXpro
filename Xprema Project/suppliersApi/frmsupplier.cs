@@ -59,7 +59,11 @@ namespace Xprema_Project.suppliersApi
                     name = this.nameTextBox.Text,
                     PhoneNumber = this.nameTextBox.Text,
                     SuppliersNatural = this.suppliersNaturalTextBox.Text
+                   
                 };
+                
+               
+
                 if (this.cmd.AddNewSupplier(sup))
                 {
                     this.Cursor = Cursors.Default;
@@ -86,15 +90,16 @@ namespace Xprema_Project.suppliersApi
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            var Id =int.Parse(iDTextBox.Text);
             Supplier sup = new Supplier()
-            {
-                Adderss = this.adderssTextBox.Text,
+            {             
+                ID=Id,
+               Adderss = this.adderssTextBox.Text,
                 Email = this.emailTextBox.Text,
                 Fax = this.faxTextBox.Text,
                 name = this.nameTextBox.Text,
-                PhoneNumber = this.nameTextBox.Text,
+                PhoneNumber = this.phoneNumberTextBox.Text,
                 SuppliersNatural = this.suppliersNaturalTextBox.Text,
-                ID=int.Parse(iDTextBox.Text)
             };
             try
             {

@@ -29,5 +29,6 @@ namespace Xprema.Data
         public string Email { get; set; }
     
         public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual UserSystem UserSystem { get; set; }
     }
 }

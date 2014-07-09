@@ -130,6 +130,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Xprema.Data.Account.datasource" />
     <None Include="Properties\DataSources\Xprema.Data.Attachment.datasource" />
+    <None Include="Properties\DataSources\Xprema.Data.Class1.datasource" />
     <None Include="Properties\DataSources\Xprema.Data.Contract.datasource" />
     <None Include="Properties\DataSources\Xprema.Data.DailyMovemnt.datasource" />
     <None Include="Properties\DataSources\Xprema.Data.dbContainer.datasource" />

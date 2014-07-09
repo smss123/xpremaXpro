@@ -16,5 +16,10 @@ namespace Xprema_Project.suppliersApi
         {
             InitializeComponent();
         }
+
+        private void frmFinancier_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace Xprema.Data.CommandClass
        public bool AddNewSupplier( Supplier sp){
            try
            {
-               db.Suppliers.Add(sp); db.SaveChanges();
+               db.Suppliers.Add(sp); 
+               db.SaveChanges();
                return true;
            }
            catch (Exception)
@@ -39,7 +40,7 @@ namespace Xprema.Data.CommandClass
                    tb.Fax = sp.Fax;
                    tb.Email = sp.Email;
                    tb.Adderss = sp.Adderss;
-                   tb.ProjectExpen = sp.ProjectExpen;
+                 
                    db.SaveChanges();
                    return true;
 

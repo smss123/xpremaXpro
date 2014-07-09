@@ -26,7 +26,7 @@ namespace Xprema_Project.EmployeeApi
 
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+             this.Cursor = Cursors.WaitCursor;
             try
             {
                 employeeBindingSource.DataSource = db.Employees.ToList();

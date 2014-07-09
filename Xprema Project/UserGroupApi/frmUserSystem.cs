@@ -36,6 +36,7 @@ namespace Xprema_Project.UserGroupApi
             {
                 this.Cursor = Cursors.WaitCursor;
                 this.UserGroupComoBoxUpdate();
+                this.userSystemBindingSource.DataSource = db.UserSystems.ToList();
                 Application.DoEvents();
             }
             catch (Exception ex)
@@ -51,16 +52,21 @@ namespace Xprema_Project.UserGroupApi
         private void btnSave_Click(object sender, EventArgs e)
         {
             xUsersSystem cmd = new xUsersSystem();
+            MessageBox.Show(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
             int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
+        //    int Emp= int.Parse(this.textBox1.Text);
 
             try
             {
                 this.Cursor = Cursors.WaitCursor;
+                UserGroup g =  this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
+
                 UserSystem user = new UserSystem()
                 {
                     UserName = this.userNameTextBox.Text,
                     Password = this.passwordTextBox.Text,
-                    UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault()
+                    UserGroup =g
+                 
                 };
 
                 if (cmd.AddUserSystems(user))

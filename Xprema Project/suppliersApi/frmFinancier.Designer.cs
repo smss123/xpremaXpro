@@ -36,19 +36,19 @@
             System.Windows.Forms.Label faxLabel;
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label adderssLabel;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.radCollapsiblePanel1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
-            this.thefinancierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDTextBox = new System.Windows.Forms.TextBox();
+            this.thefinancierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.financiernameTextBox = new System.Windows.Forms.TextBox();
             this.agentNameTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
@@ -57,6 +57,7 @@
             this.adderssTextBox = new System.Windows.Forms.TextBox();
             this.thefinancierRadGridView = new Telerik.WinControls.UI.RadGridView();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
+            this.FinancierMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             iDLabel = new System.Windows.Forms.Label();
             financiernameLabel = new System.Windows.Forms.Label();
             agentNameLabel = new System.Windows.Forms.Label();
@@ -70,6 +71,75 @@
             ((System.ComponentModel.ISupportInitialize)(this.thefinancierRadGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thefinancierRadGridView.MasterTemplate)).BeginInit();
             this.SuspendLayout();
+            // 
+            // iDLabel
+            // 
+            iDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            iDLabel.AutoSize = true;
+            iDLabel.Location = new System.Drawing.Point(921, 23);
+            iDLabel.Name = "iDLabel";
+            iDLabel.Size = new System.Drawing.Size(21, 13);
+            iDLabel.TabIndex = 1;
+            iDLabel.Text = "ID:";
+            // 
+            // financiernameLabel
+            // 
+            financiernameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            financiernameLabel.AutoSize = true;
+            financiernameLabel.Location = new System.Drawing.Point(749, 23);
+            financiernameLabel.Name = "financiernameLabel";
+            financiernameLabel.Size = new System.Drawing.Size(83, 13);
+            financiernameLabel.TabIndex = 1;
+            financiernameLabel.Text = "financiername:";
+            // 
+            // agentNameLabel
+            // 
+            agentNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            agentNameLabel.AutoSize = true;
+            agentNameLabel.Location = new System.Drawing.Point(473, 24);
+            agentNameLabel.Name = "agentNameLabel";
+            agentNameLabel.Size = new System.Drawing.Size(72, 13);
+            agentNameLabel.TabIndex = 1;
+            agentNameLabel.Text = "agent Name:";
+            // 
+            // phoneNumberLabel
+            // 
+            phoneNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            phoneNumberLabel.AutoSize = true;
+            phoneNumberLabel.Location = new System.Drawing.Point(160, 23);
+            phoneNumberLabel.Name = "phoneNumberLabel";
+            phoneNumberLabel.Size = new System.Drawing.Size(87, 13);
+            phoneNumberLabel.TabIndex = 1;
+            phoneNumberLabel.Text = "Phone Number:";
+            // 
+            // faxLabel
+            // 
+            faxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            faxLabel.AutoSize = true;
+            faxLabel.Location = new System.Drawing.Point(916, 61);
+            faxLabel.Name = "faxLabel";
+            faxLabel.Size = new System.Drawing.Size(27, 13);
+            faxLabel.TabIndex = 1;
+            faxLabel.Text = "Fax:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(650, 64);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(37, 13);
+            emailLabel.TabIndex = 1;
+            emailLabel.Text = "Email:";
+            // 
+            // adderssLabel
+            // 
+            adderssLabel.AutoSize = true;
+            adderssLabel.Location = new System.Drawing.Point(385, 61);
+            adderssLabel.Name = "adderssLabel";
+            adderssLabel.Size = new System.Drawing.Size(51, 13);
+            adderssLabel.TabIndex = 1;
+            adderssLabel.Text = "Adderss:";
             // 
             // menuStrip1
             // 
@@ -112,25 +182,11 @@
             this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.adderssTextBox);
             this.radCollapsiblePanel1.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.radCollapsiblePanel1.PanelContainer.Location = new System.Drawing.Point(0, 1);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(959, 113);
+            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(959, 112);
             this.radCollapsiblePanel1.Size = new System.Drawing.Size(960, 142);
             this.radCollapsiblePanel1.TabIndex = 2;
             this.radCollapsiblePanel1.Text = "radCollapsiblePanel1";
             this.radCollapsiblePanel1.ThemeName = "VisualStudio2012Light";
-            // 
-            // thefinancierBindingSource
-            // 
-            this.thefinancierBindingSource.DataSource = typeof(Xprema.Data.Thefinancier);
-            // 
-            // iDLabel
-            // 
-            iDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(921, 23);
-            iDLabel.Name = "iDLabel";
-            iDLabel.Size = new System.Drawing.Size(21, 13);
-            iDLabel.TabIndex = 1;
-            iDLabel.Text = "ID:";
             // 
             // iDTextBox
             // 
@@ -141,15 +197,9 @@
             this.iDTextBox.Size = new System.Drawing.Size(75, 20);
             this.iDTextBox.TabIndex = 2;
             // 
-            // financiernameLabel
+            // thefinancierBindingSource
             // 
-            financiernameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            financiernameLabel.AutoSize = true;
-            financiernameLabel.Location = new System.Drawing.Point(749, 23);
-            financiernameLabel.Name = "financiernameLabel";
-            financiernameLabel.Size = new System.Drawing.Size(83, 13);
-            financiernameLabel.TabIndex = 1;
-            financiernameLabel.Text = "financiername:";
+            this.thefinancierBindingSource.DataSource = typeof(Xprema.Data.Thefinancier);
             // 
             // financiernameTextBox
             // 
@@ -160,16 +210,6 @@
             this.financiernameTextBox.Size = new System.Drawing.Size(189, 20);
             this.financiernameTextBox.TabIndex = 2;
             // 
-            // agentNameLabel
-            // 
-            agentNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            agentNameLabel.AutoSize = true;
-            agentNameLabel.Location = new System.Drawing.Point(473, 24);
-            agentNameLabel.Name = "agentNameLabel";
-            agentNameLabel.Size = new System.Drawing.Size(72, 13);
-            agentNameLabel.TabIndex = 1;
-            agentNameLabel.Text = "agent Name:";
-            // 
             // agentNameTextBox
             // 
             this.agentNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -178,16 +218,6 @@
             this.agentNameTextBox.Name = "agentNameTextBox";
             this.agentNameTextBox.Size = new System.Drawing.Size(217, 20);
             this.agentNameTextBox.TabIndex = 2;
-            // 
-            // phoneNumberLabel
-            // 
-            phoneNumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            phoneNumberLabel.AutoSize = true;
-            phoneNumberLabel.Location = new System.Drawing.Point(160, 23);
-            phoneNumberLabel.Name = "phoneNumberLabel";
-            phoneNumberLabel.Size = new System.Drawing.Size(87, 13);
-            phoneNumberLabel.TabIndex = 1;
-            phoneNumberLabel.Text = "Phone Number:";
             // 
             // phoneNumberTextBox
             // 
@@ -198,16 +228,6 @@
             this.phoneNumberTextBox.Size = new System.Drawing.Size(142, 20);
             this.phoneNumberTextBox.TabIndex = 2;
             // 
-            // faxLabel
-            // 
-            faxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            faxLabel.AutoSize = true;
-            faxLabel.Location = new System.Drawing.Point(916, 61);
-            faxLabel.Name = "faxLabel";
-            faxLabel.Size = new System.Drawing.Size(27, 13);
-            faxLabel.TabIndex = 1;
-            faxLabel.Text = "Fax:";
-            // 
             // faxTextBox
             // 
             this.faxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -217,16 +237,6 @@
             this.faxTextBox.Size = new System.Drawing.Size(217, 20);
             this.faxTextBox.TabIndex = 2;
             // 
-            // emailLabel
-            // 
-            emailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(650, 64);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(37, 13);
-            emailLabel.TabIndex = 1;
-            emailLabel.Text = "Email:";
-            // 
             // emailTextBox
             // 
             this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -235,15 +245,6 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(202, 20);
             this.emailTextBox.TabIndex = 2;
-            // 
-            // adderssLabel
-            // 
-            adderssLabel.AutoSize = true;
-            adderssLabel.Location = new System.Drawing.Point(385, 61);
-            adderssLabel.Name = "adderssLabel";
-            adderssLabel.Size = new System.Drawing.Size(51, 13);
-            adderssLabel.TabIndex = 1;
-            adderssLabel.Text = "Adderss:";
             // 
             // adderssTextBox
             // 
@@ -261,63 +262,69 @@
             // thefinancierRadGridView
             // 
             this.thefinancierRadGridView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn1.DataType = typeof(int);
-            gridViewDecimalColumn1.FieldName = "ID";
-            gridViewDecimalColumn1.HeaderText = "ID";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.Name = "ID";
-            gridViewDecimalColumn1.Width = 119;
-            gridViewTextBoxColumn1.FieldName = "financiername";
-            gridViewTextBoxColumn1.HeaderText = "financiername";
-            gridViewTextBoxColumn1.IsAutoGenerated = true;
-            gridViewTextBoxColumn1.Name = "financiername";
-            gridViewTextBoxColumn1.Width = 119;
-            gridViewTextBoxColumn2.FieldName = "PhoneNumber";
-            gridViewTextBoxColumn2.HeaderText = "PhoneNumber";
-            gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.Name = "PhoneNumber";
-            gridViewTextBoxColumn2.Width = 119;
-            gridViewTextBoxColumn3.FieldName = "agentName";
-            gridViewTextBoxColumn3.HeaderText = "agentName";
-            gridViewTextBoxColumn3.IsAutoGenerated = true;
-            gridViewTextBoxColumn3.Name = "agentName";
-            gridViewTextBoxColumn3.Width = 119;
-            gridViewTextBoxColumn4.FieldName = "Fax";
-            gridViewTextBoxColumn4.HeaderText = "Fax";
-            gridViewTextBoxColumn4.IsAutoGenerated = true;
-            gridViewTextBoxColumn4.Name = "Fax";
-            gridViewTextBoxColumn4.Width = 119;
-            gridViewTextBoxColumn5.FieldName = "Email";
-            gridViewTextBoxColumn5.HeaderText = "Email";
-            gridViewTextBoxColumn5.IsAutoGenerated = true;
-            gridViewTextBoxColumn5.Name = "Email";
-            gridViewTextBoxColumn5.Width = 119;
-            gridViewTextBoxColumn6.FieldName = "Adderss";
-            gridViewTextBoxColumn6.HeaderText = "Adderss";
-            gridViewTextBoxColumn6.IsAutoGenerated = true;
-            gridViewTextBoxColumn6.Name = "Adderss";
-            gridViewTextBoxColumn6.Width = 119;
-            gridViewTextBoxColumn7.DataType = typeof(Xprema.Data.ProjectProfile);
-            gridViewTextBoxColumn7.FieldName = "ProjectProfile";
-            gridViewTextBoxColumn7.HeaderText = "ProjectProfile";
-            gridViewTextBoxColumn7.IsAutoGenerated = true;
-            gridViewTextBoxColumn7.Name = "ProjectProfile";
-            gridViewTextBoxColumn7.Width = 116;
+            gridViewDecimalColumn2.DataType = typeof(int);
+            gridViewDecimalColumn2.FieldName = "ID";
+            gridViewDecimalColumn2.HeaderText = "ID";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.Name = "ID";
+            gridViewDecimalColumn2.Width = 119;
+            gridViewTextBoxColumn8.FieldName = "financiername";
+            gridViewTextBoxColumn8.HeaderText = "financiername";
+            gridViewTextBoxColumn8.IsAutoGenerated = true;
+            gridViewTextBoxColumn8.Name = "financiername";
+            gridViewTextBoxColumn8.Width = 119;
+            gridViewTextBoxColumn9.FieldName = "PhoneNumber";
+            gridViewTextBoxColumn9.HeaderText = "PhoneNumber";
+            gridViewTextBoxColumn9.IsAutoGenerated = true;
+            gridViewTextBoxColumn9.Name = "PhoneNumber";
+            gridViewTextBoxColumn9.Width = 119;
+            gridViewTextBoxColumn10.FieldName = "agentName";
+            gridViewTextBoxColumn10.HeaderText = "agentName";
+            gridViewTextBoxColumn10.IsAutoGenerated = true;
+            gridViewTextBoxColumn10.Name = "agentName";
+            gridViewTextBoxColumn10.Width = 119;
+            gridViewTextBoxColumn11.FieldName = "Fax";
+            gridViewTextBoxColumn11.HeaderText = "Fax";
+            gridViewTextBoxColumn11.IsAutoGenerated = true;
+            gridViewTextBoxColumn11.Name = "Fax";
+            gridViewTextBoxColumn11.Width = 119;
+            gridViewTextBoxColumn12.FieldName = "Email";
+            gridViewTextBoxColumn12.HeaderText = "Email";
+            gridViewTextBoxColumn12.IsAutoGenerated = true;
+            gridViewTextBoxColumn12.Name = "Email";
+            gridViewTextBoxColumn12.Width = 119;
+            gridViewTextBoxColumn13.FieldName = "Adderss";
+            gridViewTextBoxColumn13.HeaderText = "Adderss";
+            gridViewTextBoxColumn13.IsAutoGenerated = true;
+            gridViewTextBoxColumn13.Name = "Adderss";
+            gridViewTextBoxColumn13.Width = 119;
+            gridViewTextBoxColumn14.DataType = typeof(Xprema.Data.ProjectProfile);
+            gridViewTextBoxColumn14.FieldName = "ProjectProfile";
+            gridViewTextBoxColumn14.HeaderText = "ProjectProfile";
+            gridViewTextBoxColumn14.IsAutoGenerated = true;
+            gridViewTextBoxColumn14.Name = "ProjectProfile";
+            gridViewTextBoxColumn14.Width = 116;
             this.thefinancierRadGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn1,
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7});
+            gridViewDecimalColumn2,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12,
+            gridViewTextBoxColumn13,
+            gridViewTextBoxColumn14});
             this.thefinancierRadGridView.MasterTemplate.DataSource = this.thefinancierBindingSource;
             this.thefinancierRadGridView.Name = "thefinancierRadGridView";
             this.thefinancierRadGridView.Size = new System.Drawing.Size(960, 324);
             this.thefinancierRadGridView.TabIndex = 3;
             this.thefinancierRadGridView.Text = "radGridView1";
             this.thefinancierRadGridView.ThemeName = "VisualStudio2012Light";
+            // 
+            // FinancierMenuStrip
+            // 
+            this.FinancierMenuStrip.Name = "FinancierMenuStrip";
+            this.FinancierMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FinancierMenuStrip.Size = new System.Drawing.Size(153, 26);
             // 
             // frmFinancier
             // 
@@ -332,6 +339,7 @@
             this.Name = "frmFinancier";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "frmFinancier";
+            this.Load += new System.EventHandler(this.frmFinancier_Load);
             this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);
             this.radCollapsiblePanel1.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel1)).EndInit();
@@ -358,5 +366,6 @@
         private System.Windows.Forms.TextBox adderssTextBox;
         private Telerik.WinControls.UI.RadGridView thefinancierRadGridView;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
+        private System.Windows.Forms.ContextMenuStrip FinancierMenuStrip;
     }
 }

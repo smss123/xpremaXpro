@@ -14,11 +14,6 @@ namespace Xprema.Data
     
     public partial class ProjectExpens
     {
-        public ProjectExpens()
-        {
-            this.Suppliers = new HashSet<Supplier>();
-        }
-    
         public int ID { get; set; }
         public string ExpensesName { get; set; }
         public System.DateTime DateofProcess { get; set; }
@@ -27,7 +22,7 @@ namespace Xprema.Data
         public string CashingNumber { get; set; }
     
         public virtual ProjectSubActivity ProjectSubActivity { get; set; }
-        public virtual ICollection<Supplier> Suppliers { get; set; }
         public virtual Account Account { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

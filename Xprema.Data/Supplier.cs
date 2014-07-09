@@ -14,6 +14,11 @@ namespace Xprema.Data
     
     public partial class Supplier
     {
+        public Supplier()
+        {
+            this.ProjectExpens = new HashSet<ProjectExpens>();
+        }
+    
         public int ID { get; set; }
         public string name { get; set; }
         public string PhoneNumber { get; set; }
@@ -22,6 +27,6 @@ namespace Xprema.Data
         public string Email { get; set; }
         public string Adderss { get; set; }
     
-        public virtual ProjectExpens ProjectExpen { get; set; }
+        public virtual ICollection<ProjectExpens> ProjectExpens { get; set; }
     }
 }

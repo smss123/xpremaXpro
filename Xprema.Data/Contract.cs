@@ -29,6 +29,5 @@ namespace Xprema.Data
         public virtual Employee Employee { get; set; }
         public virtual ProjectProfile ProjectProfile { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
-        public virtual UserSystem UserSystem { get; set; }
     }
 }

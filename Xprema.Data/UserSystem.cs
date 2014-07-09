@@ -16,7 +16,7 @@ namespace Xprema.Data
     {
         public UserSystem()
         {
-            this.Contracts = new HashSet<Contract>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public int Id { get; set; }
@@ -24,6 +24,6 @@ namespace Xprema.Data
         public string Password { get; set; }
     
         public virtual UserGroup UserGroup { get; set; }
-        public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
