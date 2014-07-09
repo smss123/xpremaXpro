@@ -61,6 +61,12 @@
     <Reference Include="TelerikCommon, Version=2014.2.617.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeeApi\frmContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeApi\frmContracts.Designer.cs">
+      <DependentUpon>frmContracts.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeApi\frmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="UserGroupApi\frmUserSystem.Designer.cs">
       <DependentUpon>frmUserSystem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EmployeeApi\frmContracts.resx">
+      <DependentUpon>frmContracts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeApi\frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </EmbeddedResource>

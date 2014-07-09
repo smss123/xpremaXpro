@@ -6,5 +6,46 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="Contract" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <Children>
+      <GenericObjectDataSource DisplayName="ProjectProfile" Version="1.0">
+         <TypeInfo>Xprema.Data.ProjectProfile, Xprema.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="ID">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                        <BindableControlInfo Name="RadMultiColumnComboBox" Type="Telerik.WinControls.UI.RadMultiColumnComboBox" AssemblyName="Telerik.WinControls.GridView, Version=2014.2.617.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v4.5" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+   </Children>
    <TypeInfo>Xprema.Data.Contract, Xprema.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeUISetting>
+      <PropertyUISettings>
+         <PropertyUISetting Name="EndDate">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="RadDateTimePicker" Type="Telerik.WinControls.UI.RadDateTimePicker" AssemblyName="Telerik.WinControls.UI, Version=2014.2.617.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="StartDate">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="RadDateTimePicker" Type="Telerik.WinControls.UI.RadDateTimePicker" AssemblyName="Telerik.WinControls.UI, Version=2014.2.617.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="EmplyeeAccount_ID">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="RadMultiColumnComboBox" Type="Telerik.WinControls.UI.RadMultiColumnComboBox" AssemblyName="Telerik.WinControls.GridView, Version=2014.2.617.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" Frameworks=".NETFramework,Version=v2.0;.NETFramework,Version=v4.5" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+      </PropertyUISettings>
+   </TypeUISetting>
 </GenericObjectDataSource>
