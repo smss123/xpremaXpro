@@ -58,6 +58,11 @@
             this.iDTextBox = new System.Windows.Forms.TextBox();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             this.contractRadGridView = new Telerik.WinControls.UI.RadGridView();
+            this.ContractscontextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BtnNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnDel = new System.Windows.Forms.ToolStripMenuItem();
             emplyeeAccount_IDLabel = new System.Windows.Forms.Label();
             startDateLabel = new System.Windows.Forms.Label();
             endDateLabel = new System.Windows.Forms.Label();
@@ -78,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProjectiDRadMultiColumnComboBox.EditorControl.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractRadGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractRadGridView.MasterTemplate)).BeginInit();
+            this.ContractscontextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // emplyeeAccount_IDLabel
@@ -184,7 +190,7 @@
             this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.iDTextBox);
             this.radCollapsiblePanel1.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.radCollapsiblePanel1.PanelContainer.Location = new System.Drawing.Point(48, 1);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(1094, 163);
+            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(1094, 162);
             this.radCollapsiblePanel1.Size = new System.Drawing.Size(1143, 190);
             this.radCollapsiblePanel1.TabIndex = 2;
             this.radCollapsiblePanel1.Text = "radCollapsiblePanel1";
@@ -200,7 +206,7 @@
             this.emplyeeAccount_IDRadMultiColumnComboBox.EditorControl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.emplyeeAccount_IDRadMultiColumnComboBox.EditorControl.Location = new System.Drawing.Point(0, 0);
             // 
-            // emplyeeAccount_IDRadMultiColumnComboBox.NestedRadGridView
+            // 
             // 
             this.emplyeeAccount_IDRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.emplyeeAccount_IDRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowCellContextMenu = false;
@@ -259,7 +265,7 @@
             // statusCheckBox
             // 
             this.statusCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.contractBindingSource, "Status", true));
-            this.statusCheckBox.Location = new System.Drawing.Point(678, 106);
+            this.statusCheckBox.Location = new System.Drawing.Point(677, 106);
             this.statusCheckBox.Name = "statusCheckBox";
             this.statusCheckBox.Size = new System.Drawing.Size(104, 24);
             this.statusCheckBox.TabIndex = 2;
@@ -277,7 +283,7 @@
             this.ProjectiDRadMultiColumnComboBox.EditorControl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ProjectiDRadMultiColumnComboBox.EditorControl.Location = new System.Drawing.Point(0, 0);
             // 
-            // ProjectiDRadMultiColumnComboBox.NestedRadGridView
+            // 
             // 
             this.ProjectiDRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.ProjectiDRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowCellContextMenu = false;
@@ -381,6 +387,40 @@
             this.contractRadGridView.Text = "radGridView1";
             this.contractRadGridView.ThemeName = "VisualStudio2012Light";
             // 
+            // ContractscontextMenuStrip
+            // 
+            this.ContractscontextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BtnNew,
+            this.BtnSave,
+            this.BtnEdit,
+            this.BtnDel});
+            this.ContractscontextMenuStrip.Name = "ContractscontextMenuStrip";
+            this.ContractscontextMenuStrip.Size = new System.Drawing.Size(154, 92);
+            // 
+            // BtnNew
+            // 
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Size = new System.Drawing.Size(153, 22);
+            this.BtnNew.Text = "جديد     Ctrl+N";
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(153, 22);
+            this.BtnSave.Text = "حفظ     Ctrl+S";
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(153, 22);
+            this.BtnEdit.Text = "تعديل     Ctrl+U";
+            // 
+            // BtnDel
+            // 
+            this.BtnDel.Name = "BtnDel";
+            this.BtnDel.Size = new System.Drawing.Size(153, 22);
+            this.BtnDel.Text = "حذف     Ctrl+D";
+            // 
             // frmContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProjectiDRadMultiColumnComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractRadGridView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractRadGridView)).EndInit();
+            this.ContractscontextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,5 +469,10 @@
         private System.Windows.Forms.TextBox iDTextBox;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
         private Telerik.WinControls.UI.RadGridView contractRadGridView;
+        private System.Windows.Forms.ContextMenuStrip ContractscontextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem BtnNew;
+        private System.Windows.Forms.ToolStripMenuItem BtnSave;
+        private System.Windows.Forms.ToolStripMenuItem BtnEdit;
+        private System.Windows.Forms.ToolStripMenuItem BtnDel;
     }
 }
