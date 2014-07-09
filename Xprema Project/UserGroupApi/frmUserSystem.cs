@@ -52,33 +52,34 @@ namespace Xprema_Project.UserGroupApi
         private void btnSave_Click(object sender, EventArgs e)
         {
             xUsersSystem cmd = new xUsersSystem();
-            MessageBox.Show(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
+            //MessageBox.Show(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
             int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
-        //    int Emp= int.Parse(this.textBox1.Text);
+    
 
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                UserGroup g =  this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
+                UserGroup g = new UserGroup();
+                g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
 
                 UserSystem user = new UserSystem()
                 {
                     UserName = this.userNameTextBox.Text,
                     Password = this.passwordTextBox.Text,
-                    UserGroup =g
-                 
                 };
+                g.UserSystems.Add(user);
+                db.SaveChanges();
 
-                if (cmd.AddUserSystems(user))
-                {
-                    this.Cursor = Cursors.Default;
-                    MessageBox.Show("Ok");
-                }
-                else
-                {
-                    this.Cursor = Cursors.Default;
-                    MessageBox.Show("Not Ok");
-                }
+                //if (cmd.AddUserSystems(user))
+                //{
+                //    this.Cursor = Cursors.Default;
+                //    MessageBox.Show("Ok");
+                //}
+                //else
+                //{
+                //    this.Cursor = Cursors.Default;
+                //    MessageBox.Show("Not Ok");
+                //}
             }
             catch (Exception ex)
             {
@@ -112,7 +113,7 @@ namespace Xprema_Project.UserGroupApi
                 {
                     UserName = this.userNameTextBox.Text,
                     Password = this.passwordTextBox.Text,
-                    UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault(),
+                   // UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault(),
                     Id = userId
                 };
                 if (cmd.EditUserSystems(user))

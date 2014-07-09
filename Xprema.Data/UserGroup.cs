@@ -16,15 +16,15 @@ namespace Xprema.Data
     {
         public UserGroup()
         {
-            this.UserSystems = new HashSet<UserSystem>();
             this.GroupPermessions = new HashSet<GroupPermession>();
+            this.UserSystems = new HashSet<UserSystem>();
         }
     
         public int Id { get; set; }
         public string GroupName { get; set; }
         public string GroupDescription { get; set; }
     
-        public virtual ICollection<UserSystem> UserSystems { get; set; }
         public virtual ICollection<GroupPermession> GroupPermessions { get; set; }
+        public virtual ICollection<UserSystem> UserSystems { get; set; }
     }
 }

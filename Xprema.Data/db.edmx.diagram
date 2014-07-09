@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cec3454296ad4ff99bf654e5f20e0ee4" Name="Diagram1" ZoomLevel="81" >
+      <Diagram DiagramId="cec3454296ad4ff99bf654e5f20e0ee4" Name="Diagram1" ZoomLevel="106" >
         <EntityTypeShape EntityType="db.UserGroup" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db.UserSystem" Width="1.5" PointX="7.25" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="db.UserGroupUserSystem" />
         <EntityTypeShape EntityType="db.SystemPermession" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="false" />
         <EntityTypeShape EntityType="db.GroupPermession" Width="1.5" PointX="9.5" PointY="2.625" IsExpanded="false" />
         <AssociationConnector Association="db.SystemPermessionGroupPermession" />
@@ -42,7 +41,7 @@
         <AssociationConnector Association="db.AccountProjectExpens" />
         <AssociationConnector Association="db.AccountProjectActivity1" />
         <AssociationConnector Association="db.SupplierProjectExpens" />
-        <AssociationConnector Association="db.UserSystemEmployee" />
+        <AssociationConnector Association="db.UserGroupUserSystem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

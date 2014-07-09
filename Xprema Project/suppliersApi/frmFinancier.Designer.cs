@@ -83,7 +83,7 @@
             iDLabel.AutoSize = true;
             iDLabel.Location = new System.Drawing.Point(921, 23);
             iDLabel.Name = "iDLabel";
-            iDLabel.Size = new System.Drawing.Size(33, 13);
+            iDLabel.Size = new System.Drawing.Size(27, 13);
             iDLabel.TabIndex = 1;
             iDLabel.Text = "الرقم:";
             // 
@@ -93,7 +93,7 @@
             financiernameLabel.AutoSize = true;
             financiernameLabel.Location = new System.Drawing.Point(749, 23);
             financiernameLabel.Name = "financiernameLabel";
-            financiernameLabel.Size = new System.Drawing.Size(63, 13);
+            financiernameLabel.Size = new System.Drawing.Size(51, 13);
             financiernameLabel.TabIndex = 1;
             financiernameLabel.Text = "اسم الممول:";
             // 
@@ -103,7 +103,7 @@
             agentNameLabel.AutoSize = true;
             agentNameLabel.Location = new System.Drawing.Point(473, 24);
             agentNameLabel.Name = "agentNameLabel";
-            agentNameLabel.Size = new System.Drawing.Size(61, 13);
+            agentNameLabel.Size = new System.Drawing.Size(50, 13);
             agentNameLabel.TabIndex = 1;
             agentNameLabel.Text = "اسم الوكيل:";
             // 
@@ -113,7 +113,7 @@
             phoneNumberLabel.AutoSize = true;
             phoneNumberLabel.Location = new System.Drawing.Point(180, 23);
             phoneNumberLabel.Name = "phoneNumberLabel";
-            phoneNumberLabel.Size = new System.Drawing.Size(60, 13);
+            phoneNumberLabel.Size = new System.Drawing.Size(49, 13);
             phoneNumberLabel.TabIndex = 1;
             phoneNumberLabel.Text = "رقم الهاتف:";
             // 
@@ -123,7 +123,7 @@
             faxLabel.AutoSize = true;
             faxLabel.Location = new System.Drawing.Point(908, 70);
             faxLabel.Name = "faxLabel";
-            faxLabel.Size = new System.Drawing.Size(45, 13);
+            faxLabel.Size = new System.Drawing.Size(34, 13);
             faxLabel.TabIndex = 1;
             faxLabel.Text = "الفاكس:";
             // 
@@ -133,7 +133,7 @@
             emailLabel.AutoSize = true;
             emailLabel.Location = new System.Drawing.Point(588, 67);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(87, 13);
+            emailLabel.Size = new System.Drawing.Size(71, 13);
             emailLabel.TabIndex = 1;
             emailLabel.Text = "البريد الالكتروني:";
             emailLabel.Click += new System.EventHandler(this.emailLabel_Click);
@@ -143,7 +143,7 @@
             adderssLabel.AutoSize = true;
             adderssLabel.Location = new System.Drawing.Point(331, 68);
             adderssLabel.Name = "adderssLabel";
-            adderssLabel.Size = new System.Drawing.Size(43, 13);
+            adderssLabel.Size = new System.Drawing.Size(36, 13);
             adderssLabel.TabIndex = 1;
             adderssLabel.Text = "العنوان:";
             // 
@@ -350,30 +350,30 @@
             this.btnDel});
             this.FinancierMenuStrip.Name = "FinancierMenuStrip";
             this.FinancierMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.FinancierMenuStrip.Size = new System.Drawing.Size(154, 92);
+            this.FinancierMenuStrip.Size = new System.Drawing.Size(150, 92);
             // 
             // btnNew
             // 
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(153, 22);
+            this.btnNew.Size = new System.Drawing.Size(149, 22);
             this.btnNew.Text = "جديد     Ctrl+N";
             // 
             // btnSave
             // 
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 22);
+            this.btnSave.Size = new System.Drawing.Size(149, 22);
             this.btnSave.Text = "حفظ     Ctrl+S";
             // 
             // btnedit
             // 
             this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(153, 22);
+            this.btnedit.Size = new System.Drawing.Size(149, 22);
             this.btnedit.Text = "تعديل     Ctrl+U";
             // 
             // btnDel
             // 
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(153, 22);
+            this.btnDel.Size = new System.Drawing.Size(149, 22);
             this.btnDel.Text = "حذف     Ctrl+D";
             // 
             // frmFinancier
@@ -388,7 +388,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmFinancier";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Text = "frmFinancier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "الممولين";
             this.Load += new System.EventHandler(this.frmFinancier_Load);
             this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);
             this.radCollapsiblePanel1.PanelContainer.PerformLayout();

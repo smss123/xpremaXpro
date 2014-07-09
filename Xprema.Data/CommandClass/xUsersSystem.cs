@@ -35,7 +35,7 @@ namespace Xprema.Data.CommandClass
              {
                  U.UserName = Usr.UserName;
                  U.Password = Usr.Password;
-                 U.UserGroup = Usr.UserGroup;
+                // U.UserGroup = Usr.UserGroup;
                  db.SaveChanges();
                  return true;
 

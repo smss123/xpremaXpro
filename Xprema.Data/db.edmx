@@ -23,10 +23,6 @@
     <EntitySet Name="Suppliers" EntityType="db.Store.Suppliers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts" EntityType="db.Store.Accounts" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DailyMovemnts" EntityType="db.Store.DailyMovemnts" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="UserGroupUserSystem" Association="db.Store.UserGroupUserSystem">
-      <End Role="UserGroup" EntitySet="UserGroups" />
-      <End Role="UserSystem" EntitySet="UserSystems" />
-    </AssociationSet>
     <AssociationSet Name="SystemPermessionGroupPermession" Association="db.Store.SystemPermessionGroupPermession">
       <End Role="SystemPermession" EntitySet="SystemPermessions" />
       <End Role="GroupPermession" EntitySet="GroupPermessions" />
@@ -103,9 +99,9 @@
       <End Role="Supplier" EntitySet="Suppliers" />
       <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
     </AssociationSet>
-    <AssociationSet Name="UserSystemEmployee" Association="db.Store.UserSystemEmployee">
+    <AssociationSet Name="UserGroupUserSystem" Association="db.Store.UserGroupUserSystem">
+      <End Role="UserGroup" EntitySet="UserGroups" />
       <End Role="UserSystem" EntitySet="UserSystems" />
-      <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserGroups">
@@ -123,7 +119,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserGroup_Id" Type="int" Nullable="false" />
+    <Property Name="UserGroup_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="SystemPermessions">
     <Key>
@@ -178,7 +174,6 @@
     <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Mobilenumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="UserSystem_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectActivities">
     <Key>
@@ -308,18 +303,6 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DateOfProcess" Type="datetime" Nullable="false" />
   </EntityType>
-  <Association Name="UserGroupUserSystem">
-    <End Role="UserGroup" Type="db.Store.UserGroups" Multiplicity="1" />
-    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserGroup">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserSystem">
-        <PropertyRef Name="UserGroup_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="SystemPermessionGroupPermession">
     <End Role="SystemPermession" Type="db.Store.SystemPermessions" Multiplicity="1" />
     <End Role="GroupPermession" Type="db.Store.GroupPermessions" Multiplicity="*" />
@@ -550,15 +533,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="UserSystemEmployee">
-    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="1" />
-    <End Role="Employee" Type="db.Store.Employees" Multiplicity="*" />
+  <Association Name="UserGroupUserSystem">
+    <End Role="UserGroup" Type="db.Store.UserGroups" Multiplicity="0..1" />
+    <End Role="UserSystem" Type="db.Store.UserSystems" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="UserSystem">
+      <Principal Role="UserGroup">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="UserSystem_Id" />
+      <Dependent Role="UserSystem">
+        <PropertyRef Name="UserGroup_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -569,10 +552,6 @@
         <EntityContainer Name="dbContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserGroups" EntityType="db.UserGroup" />
           <EntitySet Name="UserSystems" EntityType="db.UserSystem" />
-          <AssociationSet Name="UserGroupUserSystem" Association="db.UserGroupUserSystem">
-            <End Role="UserGroup" EntitySet="UserGroups" />
-            <End Role="UserSystem" EntitySet="UserSystems" />
-          </AssociationSet>
           <EntitySet Name="SystemPermessions" EntityType="db.SystemPermession" />
           <EntitySet Name="GroupPermessions" EntityType="db.GroupPermession" />
           <AssociationSet Name="SystemPermessionGroupPermession" Association="db.SystemPermessionGroupPermession">
@@ -664,9 +643,9 @@
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="ProjectExpens" EntitySet="ProjectExpenses" />
           </AssociationSet>
-          <AssociationSet Name="UserSystemEmployee" Association="db.UserSystemEmployee">
+          <AssociationSet Name="UserGroupUserSystem" Association="db.UserGroupUserSystem">
+            <End Role="UserGroup" EntitySet="UserGroups" />
             <End Role="UserSystem" EntitySet="UserSystems" />
-            <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserGroup">
@@ -676,8 +655,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="GroupName" Nullable="false" />
           <Property Type="String" Name="GroupDescription" Nullable="false" />
-          <NavigationProperty Name="UserSystems" Relationship="db.UserGroupUserSystem" FromRole="UserGroup" ToRole="UserSystem" />
           <NavigationProperty Name="GroupPermessions" Relationship="db.UserGroupGroupPermession" FromRole="UserGroup" ToRole="GroupPermession" />
+          <NavigationProperty Name="UserSystems" Relationship="db.UserGroupUserSystem" FromRole="UserGroup" ToRole="UserSystem" />
         </EntityType>
         <EntityType Name="UserSystem">
           <Key>
@@ -687,12 +666,7 @@
           <Property Type="String" Name="UserName" Nullable="false" />
           <Property Type="String" Name="Password" Nullable="false" />
           <NavigationProperty Name="UserGroup" Relationship="db.UserGroupUserSystem" FromRole="UserSystem" ToRole="UserGroup" />
-          <NavigationProperty Name="Employees" Relationship="db.UserSystemEmployee" FromRole="UserSystem" ToRole="Employee" />
         </EntityType>
-        <Association Name="UserGroupUserSystem">
-          <End Type="db.UserGroup" Role="UserGroup" Multiplicity="1" />
-          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="*" />
-        </Association>
         <EntityType Name="SystemPermession">
           <Key>
             <PropertyRef Name="Id" />
@@ -760,7 +734,6 @@
           <Property Name="Mobilenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contracts" Relationship="db.EmployeeContract" FromRole="Employee" ToRole="Contract" />
-          <NavigationProperty Name="UserSystem" Relationship="db.UserSystemEmployee" FromRole="Employee" ToRole="UserSystem" />
         </EntityType>
         <EntityType Name="ProjectActivity">
           <Key>
@@ -973,9 +946,9 @@
           <End Type="db.Supplier" Role="Supplier" Multiplicity="1" />
           <End Type="db.ProjectExpens" Role="ProjectExpens" Multiplicity="*" />
         </Association>
-        <Association Name="UserSystemEmployee">
-          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="1" />
-          <End Type="db.Employee" Role="Employee" Multiplicity="*" />
+        <Association Name="UserGroupUserSystem">
+          <End Type="db.UserGroup" Role="UserGroup" Multiplicity="0..1" />
+          <End Type="db.UserSystem" Role="UserSystem" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1179,14 +1152,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UserGroupUserSystem" TypeName="db.UserGroupUserSystem" StoreEntitySet="UserSystems">
-      <EndProperty Name="UserGroup">
-        <ScalarProperty Name="Id" ColumnName="UserGroup_Id" />
-      </EndProperty>
-      <EndProperty Name="UserSystem">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="SystemPermessionGroupPermession" TypeName="db.SystemPermessionGroupPermession" StoreEntitySet="GroupPermessions">
       <EndProperty Name="SystemPermession">
         <ScalarProperty Name="Id" ColumnName="SystemPermession_Id" />
@@ -1340,13 +1305,14 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="UserSystemEmployee" TypeName="db.UserSystemEmployee" StoreEntitySet="Employees">
+    <AssociationSetMapping Name="UserGroupUserSystem" TypeName="db.UserGroupUserSystem" StoreEntitySet="UserSystems">
+      <EndProperty Name="UserGroup">
+        <ScalarProperty Name="Id" ColumnName="UserGroup_Id" />
+      </EndProperty>
       <EndProperty Name="UserSystem">
-        <ScalarProperty Name="Id" ColumnName="UserSystem_Id" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
+      <Condition ColumnName="UserGroup_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

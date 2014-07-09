@@ -14,16 +14,10 @@ namespace Xprema.Data
     
     public partial class UserSystem
     {
-        public UserSystem()
-        {
-            this.Employees = new HashSet<Employee>();
-        }
-    
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
     
         public virtual UserGroup UserGroup { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
