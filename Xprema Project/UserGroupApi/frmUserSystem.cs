@@ -53,27 +53,23 @@ namespace Xprema_Project.UserGroupApi
                 this.Cursor = Cursors.Default;
             }
         }
-         private void UpdatePanelInfo(GridViewRowInfo currentRow, int i)
-        {
 
+        private void UpdatePanelInfo(GridViewRowInfo currentRow, int i)
+        {
             if (currentRow != null && !(currentRow is GridViewNewRowInfo))
             {
                 this.idTextBox.Text = currentRow.Cells["Id"].Value.ToString(); 
-                this.userNameTextBox.Text= currentRow.Cells["UserName"].Value.ToString();
+                this.userNameTextBox.Text = currentRow.Cells["UserName"].Value.ToString();
                 this.passwordTextBox.Text = currentRow.Cells["Password"].Value.ToString();
                 this.userGroupRadMultiColumnComboBox.Text = currentRow.Cells["UserGroup"].Value.ToString();
-             
-
             }
-            }
-
+        }
         
         private void btnSave_Click(object sender, EventArgs e)
         {
             xUsersSystem cmd = new xUsersSystem();
             //MessageBox.Show(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
             int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
-    
 
             try
             {
@@ -88,7 +84,6 @@ namespace Xprema_Project.UserGroupApi
                 };
                 g.UserSystems.Add(user);
                 db.SaveChanges();
-
                 //if (cmd.AddUserSystems(user))
                 //{
                 //    this.Cursor = Cursors.Default;
@@ -125,20 +120,18 @@ namespace Xprema_Project.UserGroupApi
         {
             try
             {
-                xUsersSystem cmd = new xUsersSystem();
+              
                 int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
                 int userId = int.Parse(this.idTextBox.Text);
-                UserSystem user = new UserSystem()
-                {     Id = userId,
-                    UserName = this.userNameTextBox.Text,
-                    Password = this.passwordTextBox.Text,
-                    UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault()
-                   
-                };
-                if (cmd.EditUserSystems(user))
-                {
-                    MessageBox.Show("don");
-                }
+                UserGroup g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
+                UserSystem u = db.UserSystems.Where(p => p.Id == userId).SingleOrDefault();
+                
+                u.UserName = this.userNameTextBox.Text;
+                u.Password = this.passwordTextBox.Text;
+                u.UserGroup = g;
+                db.SaveChanges();
+
+                MessageBox.Show("don");
             }
             catch (Exception ex)
             {
@@ -179,7 +172,7 @@ namespace Xprema_Project.UserGroupApi
 
         private void userSystemRadGridView_CurrentRowChanged(object sender, CurrentRowChangedEventArgs e)
         {
-           UpdatePanelInfo(this.userSystemRadGridView.CurrentRow, 5);
+            UpdatePanelInfo(this.userSystemRadGridView.CurrentRow, 5);
         }
     }
 }
