@@ -65,6 +65,9 @@ namespace Xprema_Project.UserGroupApi
             }
             AddNewGroup(g);
             MessageBox.Show("Ok");
+            btnSave.Enabled = false;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
 
