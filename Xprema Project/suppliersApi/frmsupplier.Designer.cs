@@ -36,14 +36,14 @@
             System.Windows.Forms.Label faxLabel;
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label adderssLabel;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.جديدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اضافةToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -238,9 +238,9 @@
             this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.adderssTextBox);
             this.radCollapsiblePanel1.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.radCollapsiblePanel1.PanelContainer.Location = new System.Drawing.Point(3, 1);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(984, 154);
+            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(984, 178);
             this.radCollapsiblePanel1.PanelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.radCollapsiblePanel1_PanelContainer_Paint);
-            this.radCollapsiblePanel1.Size = new System.Drawing.Size(988, 184);
+            this.radCollapsiblePanel1.Size = new System.Drawing.Size(988, 207);
             this.radCollapsiblePanel1.TabIndex = 2;
             this.radCollapsiblePanel1.Text = "radCollapsiblePanel1";
             this.radCollapsiblePanel1.ThemeName = "VisualStudio2012Light";
@@ -284,7 +284,7 @@
             this.phoneNumberTextBox.Location = new System.Drawing.Point(63, 22);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(263, 20);
-            this.phoneNumberTextBox.TabIndex = 4;
+            this.phoneNumberTextBox.TabIndex = 3;
             // 
             // faxTextBox
             // 
@@ -293,7 +293,7 @@
             this.faxTextBox.Location = new System.Drawing.Point(63, 72);
             this.faxTextBox.Name = "faxTextBox";
             this.faxTextBox.Size = new System.Drawing.Size(263, 20);
-            this.faxTextBox.TabIndex = 6;
+            this.faxTextBox.TabIndex = 5;
             // 
             // emailTextBox
             // 
@@ -302,7 +302,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(63, 48);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(263, 20);
-            this.emailTextBox.TabIndex = 5;
+            this.emailTextBox.TabIndex = 4;
             // 
             // adderssTextBox
             // 
@@ -312,7 +312,7 @@
             this.adderssTextBox.Multiline = true;
             this.adderssTextBox.Name = "adderssTextBox";
             this.adderssTextBox.Size = new System.Drawing.Size(280, 44);
-            this.adderssTextBox.TabIndex = 3;
+            this.adderssTextBox.TabIndex = 6;
             // 
             // supplierRadGridView
             // 
@@ -322,73 +322,75 @@
             this.supplierRadGridView.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.supplierRadGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.supplierRadGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.supplierRadGridView.Location = new System.Drawing.Point(0, 208);
+            this.supplierRadGridView.Location = new System.Drawing.Point(0, 231);
             // 
             // supplierRadGridView
             // 
+            this.supplierRadGridView.MasterTemplate.AutoGenerateColumns = false;
             this.supplierRadGridView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn2.DataType = typeof(int);
-            gridViewDecimalColumn2.EnableExpressionEditor = false;
-            gridViewDecimalColumn2.FieldName = "ID";
-            gridViewDecimalColumn2.HeaderText = "رقم الموَرد";
-            gridViewDecimalColumn2.IsAutoGenerated = true;
-            gridViewDecimalColumn2.Name = "ID";
-            gridViewDecimalColumn2.Width = 104;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.FieldName = "name";
-            gridViewTextBoxColumn7.HeaderText = "اسم الموَرد";
-            gridViewTextBoxColumn7.IsAutoGenerated = true;
-            gridViewTextBoxColumn7.Name = "name";
-            gridViewTextBoxColumn7.Width = 190;
-            gridViewTextBoxColumn8.EnableExpressionEditor = false;
-            gridViewTextBoxColumn8.FieldName = "PhoneNumber";
-            gridViewTextBoxColumn8.HeaderText = "رقم الهاتف";
-            gridViewTextBoxColumn8.IsAutoGenerated = true;
-            gridViewTextBoxColumn8.Name = "PhoneNumber";
-            gridViewTextBoxColumn8.Width = 165;
-            gridViewTextBoxColumn9.EnableExpressionEditor = false;
-            gridViewTextBoxColumn9.FieldName = "Adderss";
-            gridViewTextBoxColumn9.HeaderText = "العنوان";
-            gridViewTextBoxColumn9.IsAutoGenerated = true;
-            gridViewTextBoxColumn9.Name = "Adderss";
-            gridViewTextBoxColumn9.Width = 107;
-            gridViewTextBoxColumn10.EnableExpressionEditor = false;
-            gridViewTextBoxColumn10.FieldName = "SuppliersNatural";
-            gridViewTextBoxColumn10.HeaderText = "طبيعة المواد الموَردة";
-            gridViewTextBoxColumn10.IsAutoGenerated = true;
-            gridViewTextBoxColumn10.Name = "SuppliersNatural";
-            gridViewTextBoxColumn10.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn10.Width = 124;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.FieldName = "Fax";
-            gridViewTextBoxColumn11.HeaderText = "فاكس";
-            gridViewTextBoxColumn11.IsAutoGenerated = true;
-            gridViewTextBoxColumn11.Name = "Fax";
-            gridViewTextBoxColumn11.Width = 140;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.FieldName = "Email";
-            gridViewTextBoxColumn12.HeaderText = "البريد الالكتروني";
-            gridViewTextBoxColumn12.IsAutoGenerated = true;
-            gridViewTextBoxColumn12.Name = "Email";
-            gridViewTextBoxColumn12.Width = 146;
+            gridViewDecimalColumn1.DataType = typeof(int);
+            gridViewDecimalColumn1.EnableExpressionEditor = false;
+            gridViewDecimalColumn1.FieldName = "ID";
+            gridViewDecimalColumn1.HeaderText = "رقم الموَرد";
+            gridViewDecimalColumn1.IsAutoGenerated = true;
+            gridViewDecimalColumn1.Name = "ID";
+            gridViewDecimalColumn1.Width = 111;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.FieldName = "name";
+            gridViewTextBoxColumn1.HeaderText = "اسم الموَرد";
+            gridViewTextBoxColumn1.IsAutoGenerated = true;
+            gridViewTextBoxColumn1.Name = "name";
+            gridViewTextBoxColumn1.Width = 201;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.FieldName = "PhoneNumber";
+            gridViewTextBoxColumn2.HeaderText = "رقم الهاتف";
+            gridViewTextBoxColumn2.IsAutoGenerated = true;
+            gridViewTextBoxColumn2.Name = "PhoneNumber";
+            gridViewTextBoxColumn2.Width = 175;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "Adderss";
+            gridViewTextBoxColumn3.HeaderText = "العنوان";
+            gridViewTextBoxColumn3.IsAutoGenerated = true;
+            gridViewTextBoxColumn3.Name = "Adderss";
+            gridViewTextBoxColumn3.Width = 114;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "SuppliersNatural";
+            gridViewTextBoxColumn4.HeaderText = "طبيعة المواد الموَردة";
+            gridViewTextBoxColumn4.IsAutoGenerated = true;
+            gridViewTextBoxColumn4.Name = "SuppliersNatural";
+            gridViewTextBoxColumn4.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn4.Width = 132;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "Fax";
+            gridViewTextBoxColumn5.HeaderText = "فاكس";
+            gridViewTextBoxColumn5.IsAutoGenerated = true;
+            gridViewTextBoxColumn5.Name = "Fax";
+            gridViewTextBoxColumn5.Width = 149;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "Email";
+            gridViewTextBoxColumn6.HeaderText = "البريد الالكتروني";
+            gridViewTextBoxColumn6.IsAutoGenerated = true;
+            gridViewTextBoxColumn6.Name = "Email";
+            gridViewTextBoxColumn6.Width = 94;
             this.supplierRadGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn2,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12});
+            gridViewDecimalColumn1,
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.supplierRadGridView.MasterTemplate.DataSource = this.supplierBindingSource;
-            sortDescriptor2.PropertyName = "SuppliersNatural";
+            sortDescriptor1.PropertyName = "SuppliersNatural";
             this.supplierRadGridView.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor2});
+            sortDescriptor1});
             this.supplierRadGridView.Name = "supplierRadGridView";
             this.supplierRadGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.supplierRadGridView.Size = new System.Drawing.Size(988, 349);
+            this.supplierRadGridView.Size = new System.Drawing.Size(988, 326);
             this.supplierRadGridView.TabIndex = 3;
             this.supplierRadGridView.Text = "radGridView1";
             this.supplierRadGridView.ThemeName = "VisualStudio2012Light";
+            this.supplierRadGridView.DoubleClick += new System.EventHandler(this.MasterTemplate_DoubleClick);
             // 
             // suppliercontextMenuStrip
             // 
@@ -399,7 +401,7 @@
             this.btnDelete});
             this.suppliercontextMenuStrip.Name = "suppliercontextMenuStrip";
             this.suppliercontextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.suppliercontextMenuStrip.Size = new System.Drawing.Size(154, 114);
+            this.suppliercontextMenuStrip.Size = new System.Drawing.Size(154, 92);
             // 
             // btnNew
             // 
@@ -410,6 +412,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(153, 22);
             this.btnSave.Text = "حفظ     Ctrl+S";
@@ -417,6 +420,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Enabled = false;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(153, 22);
             this.btnEdit.Text = "تعديل     Ctrl+U";

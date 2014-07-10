@@ -3,8 +3,12 @@ using System.Linq;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.Data;
+using Telerik.WinControls.UI;
 using Xprema.Data;
 using Xprema.Data.CommandClass;
+using System.IO;
+using System.Reflection;
+using Telerik.WinControls.Primitives; 
 
 namespace Xprema_Project.UserGroupApi
 {
@@ -27,6 +31,7 @@ namespace Xprema_Project.UserGroupApi
             FilterDescriptor filter = new FilterDescriptor();
             filter.PropertyName = this.userGroupRadMultiColumnComboBox.DisplayMember;
             filter.Operator = FilterOperator.Contains;
+            this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.FilterDescriptors.Clear();
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.FilterDescriptors.Add(filter);
         }
 
@@ -48,7 +53,21 @@ namespace Xprema_Project.UserGroupApi
                 this.Cursor = Cursors.Default;
             }
         }
+         private void UpdatePanelInfo(GridViewRowInfo currentRow, int i)
+        {
 
+            if (currentRow != null && !(currentRow is GridViewNewRowInfo))
+            {
+                this.idTextBox.Text = currentRow.Cells["Id"].Value.ToString(); 
+                this.userNameTextBox.Text= currentRow.Cells["UserName"].Value.ToString();
+                this.passwordTextBox.Text = currentRow.Cells["Password"].Value.ToString();
+                this.userGroupRadMultiColumnComboBox.Text = currentRow.Cells["UserGroup"].Value.ToString();
+             
+
+            }
+            }
+
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             xUsersSystem cmd = new xUsersSystem();
@@ -110,14 +129,15 @@ namespace Xprema_Project.UserGroupApi
                 int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
                 int userId = int.Parse(this.idTextBox.Text);
                 UserSystem user = new UserSystem()
-                {
+                {     Id = userId,
                     UserName = this.userNameTextBox.Text,
                     Password = this.passwordTextBox.Text,
-                   // UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault(),
-                    Id = userId
+                    UserGroup = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault()
+                   
                 };
                 if (cmd.EditUserSystems(user))
                 {
+                    MessageBox.Show("don");
                 }
             }
             catch (Exception ex)
@@ -155,6 +175,11 @@ namespace Xprema_Project.UserGroupApi
                     this.Cursor = Cursors.Default;
                 }
             }
+        }
+
+        private void userSystemRadGridView_CurrentRowChanged(object sender, CurrentRowChangedEventArgs e)
+        {
+           UpdatePanelInfo(this.userSystemRadGridView.CurrentRow, 5);
         }
     }
 }

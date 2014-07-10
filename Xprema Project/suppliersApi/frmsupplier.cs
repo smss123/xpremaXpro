@@ -144,5 +144,10 @@ namespace Xprema_Project.suppliersApi
             
             }
         }
+
+        private void MasterTemplate_DoubleClick(object sender, EventArgs e)
+        {
+            btnEdit.Enabled = true;
+        }
     }
 }

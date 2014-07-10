@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/09/2014 00:32:37
--- Generated from EDMX file: C:\Users\Sezer\Documents\GitHub\xpremaXpro\Xprema.Data\db.edmx
+-- Date Created: 07/10/2014 00:03:59
+-- Generated from EDMX file: C:\Users\Heroo\Documents\GitHub\xpremaXpro\Xprema.Data\db.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -454,7 +454,6 @@ ADD CONSTRAINT [FK_SystemPermessionGroupPermession]
     REFERENCES [dbo].[SystemPermessions]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SystemPermessionGroupPermession'
 CREATE INDEX [IX_FK_SystemPermessionGroupPermession]
@@ -469,7 +468,6 @@ ADD CONSTRAINT [FK_UserGroupGroupPermession]
     REFERENCES [dbo].[UserGroups]
         ([Id])
     ON DELETE CASCADE ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserGroupGroupPermession'
 CREATE INDEX [IX_FK_UserGroupGroupPermession]
@@ -484,7 +482,6 @@ ADD CONSTRAINT [FK_ProjectProfileAttachment]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileAttachment'
 CREATE INDEX [IX_FK_ProjectProfileAttachment]
@@ -499,7 +496,6 @@ ADD CONSTRAINT [FK_ProjectOrderAttachment]
     REFERENCES [dbo].[ProjectOrders]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectOrderAttachment'
 CREATE INDEX [IX_FK_ProjectOrderAttachment]
@@ -514,7 +510,6 @@ ADD CONSTRAINT [FK_EmployeeContract]
     REFERENCES [dbo].[Employees]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeContract'
 CREATE INDEX [IX_FK_EmployeeContract]
@@ -529,7 +524,6 @@ ADD CONSTRAINT [FK_ProjectProfileContract]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileContract'
 CREATE INDEX [IX_FK_ProjectProfileContract]
@@ -544,7 +538,6 @@ ADD CONSTRAINT [FK_ContractAccount]
     REFERENCES [dbo].[Contracts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ContractAccount'
 CREATE INDEX [IX_FK_ContractAccount]
@@ -559,7 +552,6 @@ ADD CONSTRAINT [FK_ProjectProfileProjectActivity]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileProjectActivity'
 CREATE INDEX [IX_FK_ProjectProfileProjectActivity]
@@ -574,7 +566,6 @@ ADD CONSTRAINT [FK_ProjectActivityProjectSubActivity]
     REFERENCES [dbo].[ProjectActivities]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectActivityProjectSubActivity'
 CREATE INDEX [IX_FK_ProjectActivityProjectSubActivity]
@@ -589,7 +580,6 @@ ADD CONSTRAINT [FK_ProjectSubActivityProjectExpens]
     REFERENCES [dbo].[ProjectSubActivities]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectSubActivityProjectExpens'
 CREATE INDEX [IX_FK_ProjectSubActivityProjectExpens]
@@ -604,7 +594,6 @@ ADD CONSTRAINT [FK_ProjectProfileThefinancier]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileThefinancier'
 CREATE INDEX [IX_FK_ProjectProfileThefinancier]
@@ -619,7 +608,6 @@ ADD CONSTRAINT [FK_AccountTransaction]
     REFERENCES [dbo].[Accounts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountTransaction'
 CREATE INDEX [IX_FK_AccountTransaction]
@@ -634,7 +622,6 @@ ADD CONSTRAINT [FK_ProjectProfileAccount]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileAccount'
 CREATE INDEX [IX_FK_ProjectProfileAccount]
@@ -649,7 +636,6 @@ ADD CONSTRAINT [FK_ProjectProfileProjectOrder]
     REFERENCES [dbo].[ProjectProfiles]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProfileProjectOrder'
 CREATE INDEX [IX_FK_ProjectProfileProjectOrder]
@@ -664,7 +650,6 @@ ADD CONSTRAINT [FK_AccountProjectActivity]
     REFERENCES [dbo].[Accounts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectActivity'
 CREATE INDEX [IX_FK_AccountProjectActivity]
@@ -679,7 +664,6 @@ ADD CONSTRAINT [FK_AccountProjectSubActivity]
     REFERENCES [dbo].[Accounts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectSubActivity'
 CREATE INDEX [IX_FK_AccountProjectSubActivity]
@@ -694,7 +678,6 @@ ADD CONSTRAINT [FK_AccountProjectExpens]
     REFERENCES [dbo].[Accounts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectExpens'
 CREATE INDEX [IX_FK_AccountProjectExpens]
@@ -709,7 +692,6 @@ ADD CONSTRAINT [FK_AccountProjectActivity1]
     REFERENCES [dbo].[Accounts]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountProjectActivity1'
 CREATE INDEX [IX_FK_AccountProjectActivity1]
@@ -724,7 +706,6 @@ ADD CONSTRAINT [FK_SupplierProjectExpens]
     REFERENCES [dbo].[Suppliers]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SupplierProjectExpens'
 CREATE INDEX [IX_FK_SupplierProjectExpens]
@@ -739,7 +720,6 @@ ADD CONSTRAINT [FK_UserGroupUserSystem]
     REFERENCES [dbo].[UserGroups]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserGroupUserSystem'
 CREATE INDEX [IX_FK_UserGroupUserSystem]

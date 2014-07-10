@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 using Xprema.Data;
 
 namespace Xprema_Project.UserGroupApi
@@ -142,6 +143,9 @@ namespace Xprema_Project.UserGroupApi
 
                     }
                     db.SaveChanges();
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+
                     return true;
                 }
                 return false;
@@ -162,6 +166,8 @@ namespace Xprema_Project.UserGroupApi
                 var q = (db.UserGroups.Where(p => p.Id == id)).SingleOrDefault();
                 db.UserGroups.Remove(q);
                 db.SaveChanges();
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
                 return true;
             }
             catch (Exception ex)
@@ -176,10 +182,43 @@ namespace Xprema_Project.UserGroupApi
             
         }
 
-       
+        private void userGroupRadGridView_DoubleClick(object sender, EventArgs e)
+        {
+            btnSave.Enabled = false;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+            UpdatePanelInfo(this.userGroupRadGridView.CurrentRow, 5);
+        }
 
-       
 
+
+
+        private void UpdatePanelInfo(GridViewRowInfo currentRow, int i)
+        {
+
+            if (currentRow != null && !(currentRow is GridViewNewRowInfo))
+            {
+                this.idTextBox.Text = currentRow.Cells[0].Value.ToString();
+                this.groupNameTextBox.Text = currentRow.Cells[1].Value.ToString();
+                this.groupDescriptionTextBox.Text = currentRow.Cells[2].Value.ToString();
+               
+
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in this.radCollapsiblePanel1.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }
+            btnSave.Enabled = true;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
 
       
     }
