@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 using Xprema.Data;
 
@@ -73,30 +74,32 @@ namespace Xprema_Project.UserGroupApi
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            int id = int .Parse(idTextBox.Text);
-            UserGroup q = new UserGroup();
-            q.Id = id;
-            q.GroupName = groupNameTextBox.Text;
-            q.GroupDescription = groupDescriptionTextBox.Text;
-            for (int i = 0; i < PermessioncheckedListBox.Items.Count; i++)
+            if (RadMessageBox.Show(Operations.SaveMessage, "رساله نبيه", MessageBoxButtons.YesNo, RadMessageIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                string per = PermessioncheckedListBox.Items[i].ToString();
-                SystemPermession groupPer = db.SystemPermessions.Where(p => p.PermessionName == (per)).SingleOrDefault(); //(from ix in db.SystemPermessions where ix.PermessionName.Contains(per) select i).SingleOrDefault(); // 
-
-                q.GroupPermessions.Add(new GroupPermession()
+                int id = int.Parse(idTextBox.Text);
+                UserGroup q = new UserGroup();
+                q.Id = id;
+                q.GroupName = groupNameTextBox.Text;
+                q.GroupDescription = groupDescriptionTextBox.Text;
+                for (int i = 0; i < PermessioncheckedListBox.Items.Count; i++)
                 {
-                    SystemPermession = groupPer,
-                    permessionValue = PermessioncheckedListBox.GetItemChecked(i)
-                });
-            }
-           
-            EditGroup(q);
-            MessageBox.Show("Edit");
-        }
+                    string per = PermessioncheckedListBox.Items[i].ToString();
+                    SystemPermession groupPer = db.SystemPermessions.Where(p => p.PermessionName == (per)).SingleOrDefault(); //(from ix in db.SystemPermessions where ix.PermessionName.Contains(per) select i).SingleOrDefault(); // 
 
+                    q.GroupPermessions.Add(new GroupPermession()
+                    {
+                        SystemPermession = groupPer,
+                        permessionValue = PermessioncheckedListBox.GetItemChecked(i)
+                    });
+                }
+
+                EditGroup(q);
+                MessageBox.Show("Edit");
+            }
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("هل تريد الحذف؟؟","",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==System.Windows.Forms.DialogResult.Yes)
+            if (RadMessageBox.Show(Operations.DeleteMessage, "رساله نبيه", MessageBoxButtons.YesNo, RadMessageIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 int id = int.Parse(idTextBox.Text);
                 DeleteGroup(id);
@@ -211,7 +214,7 @@ namespace Xprema_Project.UserGroupApi
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            foreach (Control item in this.radCollapsiblePanel1.Controls)
+            foreach (Control item in this.radCollapsiblePanel1.PanelContainer.Controls)
             {
                 if (item is TextBox)
                 {

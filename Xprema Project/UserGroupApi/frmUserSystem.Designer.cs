@@ -33,16 +33,16 @@
             System.Windows.Forms.Label passwordLabel;
             System.Windows.Forms.Label userGroupLabel;
             System.Windows.Forms.Label userNameLabel;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn7 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn25 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn8 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn26 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn27 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn28 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor4 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.radCollapsiblePanel1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
@@ -52,13 +52,13 @@
             this.userGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.userSystemRadGridView = new Telerik.WinControls.UI.RadGridView();
+            this.userSystemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             this.SysUsercontextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnNew = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnDel = new System.Windows.Forms.ToolStripMenuItem();
-            this.userSystemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             passwordLabel = new System.Windows.Forms.Label();
             userGroupLabel = new System.Windows.Forms.Label();
@@ -71,8 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.userGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSystemRadGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSystemRadGridView.MasterTemplate)).BeginInit();
-            this.SysUsercontextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userSystemBindingSource)).BeginInit();
+            this.SysUsercontextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // idLabel
@@ -189,45 +189,45 @@
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.AllowColumnChooser = false;
-            gridViewDecimalColumn7.DataType = typeof(int);
-            gridViewDecimalColumn7.EnableExpressionEditor = false;
-            gridViewDecimalColumn7.FieldName = "Id";
-            gridViewDecimalColumn7.HeaderText = "Id";
-            gridViewDecimalColumn7.IsAutoGenerated = true;
-            gridViewDecimalColumn7.IsVisible = false;
-            gridViewDecimalColumn7.Name = "Id";
-            gridViewTextBoxColumn22.EnableExpressionEditor = false;
-            gridViewTextBoxColumn22.FieldName = "GroupName";
-            gridViewTextBoxColumn22.HeaderText = "اسم المجموعة";
-            gridViewTextBoxColumn22.IsAutoGenerated = true;
-            gridViewTextBoxColumn22.Name = "GroupName";
-            gridViewTextBoxColumn22.Width = 131;
-            gridViewTextBoxColumn23.EnableExpressionEditor = false;
-            gridViewTextBoxColumn23.FieldName = "GroupDescription";
-            gridViewTextBoxColumn23.HeaderText = "الوصف";
-            gridViewTextBoxColumn23.IsAutoGenerated = true;
-            gridViewTextBoxColumn23.Name = "GroupDescription";
-            gridViewTextBoxColumn23.Width = 190;
-            gridViewTextBoxColumn24.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.UserSystem>);
-            gridViewTextBoxColumn24.EnableExpressionEditor = false;
-            gridViewTextBoxColumn24.FieldName = "UserSystems";
-            gridViewTextBoxColumn24.HeaderText = "UserSystems";
-            gridViewTextBoxColumn24.IsAutoGenerated = true;
-            gridViewTextBoxColumn24.IsVisible = false;
-            gridViewTextBoxColumn24.Name = "UserSystems";
-            gridViewTextBoxColumn25.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.GroupPermession>);
-            gridViewTextBoxColumn25.EnableExpressionEditor = false;
-            gridViewTextBoxColumn25.FieldName = "GroupPermessions";
-            gridViewTextBoxColumn25.HeaderText = "GroupPermessions";
-            gridViewTextBoxColumn25.IsAutoGenerated = true;
-            gridViewTextBoxColumn25.IsVisible = false;
-            gridViewTextBoxColumn25.Name = "GroupPermessions";
+            gridViewDecimalColumn1.DataType = typeof(int);
+            gridViewDecimalColumn1.EnableExpressionEditor = false;
+            gridViewDecimalColumn1.FieldName = "Id";
+            gridViewDecimalColumn1.HeaderText = "Id";
+            gridViewDecimalColumn1.IsAutoGenerated = true;
+            gridViewDecimalColumn1.IsVisible = false;
+            gridViewDecimalColumn1.Name = "Id";
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.FieldName = "GroupName";
+            gridViewTextBoxColumn1.HeaderText = "اسم المجموعة";
+            gridViewTextBoxColumn1.IsAutoGenerated = true;
+            gridViewTextBoxColumn1.Name = "GroupName";
+            gridViewTextBoxColumn1.Width = 131;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.FieldName = "GroupDescription";
+            gridViewTextBoxColumn2.HeaderText = "الوصف";
+            gridViewTextBoxColumn2.IsAutoGenerated = true;
+            gridViewTextBoxColumn2.Name = "GroupDescription";
+            gridViewTextBoxColumn2.Width = 190;
+            gridViewTextBoxColumn3.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.UserSystem>);
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "UserSystems";
+            gridViewTextBoxColumn3.HeaderText = "UserSystems";
+            gridViewTextBoxColumn3.IsAutoGenerated = true;
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "UserSystems";
+            gridViewTextBoxColumn4.DataType = typeof(System.Collections.Generic.ICollection<Xprema.Data.GroupPermession>);
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "GroupPermessions";
+            gridViewTextBoxColumn4.HeaderText = "GroupPermessions";
+            gridViewTextBoxColumn4.IsAutoGenerated = true;
+            gridViewTextBoxColumn4.IsVisible = false;
+            gridViewTextBoxColumn4.Name = "GroupPermessions";
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn7,
-            gridViewTextBoxColumn22,
-            gridViewTextBoxColumn23,
-            gridViewTextBoxColumn24,
-            gridViewTextBoxColumn25});
+            gridViewDecimalColumn1,
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4});
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.DataSource = this.userGroupBindingSource;
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.EnableFiltering = true;
             this.userGroupRadMultiColumnComboBox.EditorControl.MasterTemplate.EnableGrouping = false;
@@ -270,41 +270,41 @@
             // userSystemRadGridView
             // 
             this.userSystemRadGridView.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewDecimalColumn8.DataType = typeof(int);
-            gridViewDecimalColumn8.EnableExpressionEditor = false;
-            gridViewDecimalColumn8.FieldName = "Id";
-            gridViewDecimalColumn8.HeaderText = "الرقم";
-            gridViewDecimalColumn8.IsAutoGenerated = true;
-            gridViewDecimalColumn8.Name = "Id";
-            gridViewDecimalColumn8.Width = 225;
-            gridViewTextBoxColumn26.EnableExpressionEditor = false;
-            gridViewTextBoxColumn26.FieldName = "UserName";
-            gridViewTextBoxColumn26.HeaderText = "اسم المستخدم";
-            gridViewTextBoxColumn26.IsAutoGenerated = true;
-            gridViewTextBoxColumn26.Name = "UserName";
-            gridViewTextBoxColumn26.Width = 225;
-            gridViewTextBoxColumn27.EnableExpressionEditor = false;
-            gridViewTextBoxColumn27.FieldName = "Password";
-            gridViewTextBoxColumn27.HeaderText = "كلمة المرور";
-            gridViewTextBoxColumn27.IsAutoGenerated = true;
-            gridViewTextBoxColumn27.Name = "Password";
-            gridViewTextBoxColumn27.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn27.Width = 225;
-            gridViewTextBoxColumn28.EnableExpressionEditor = false;
-            gridViewTextBoxColumn28.FieldName = "UserGroup.GroupName";
-            gridViewTextBoxColumn28.HeaderText = "المجموعة/التبعية";
-            gridViewTextBoxColumn28.IsAutoGenerated = true;
-            gridViewTextBoxColumn28.Name = "UserGroup";
-            gridViewTextBoxColumn28.Width = 228;
+            gridViewDecimalColumn2.DataType = typeof(int);
+            gridViewDecimalColumn2.EnableExpressionEditor = false;
+            gridViewDecimalColumn2.FieldName = "Id";
+            gridViewDecimalColumn2.HeaderText = "الرقم";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.Name = "Id";
+            gridViewDecimalColumn2.Width = 225;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "UserName";
+            gridViewTextBoxColumn5.HeaderText = "اسم المستخدم";
+            gridViewTextBoxColumn5.IsAutoGenerated = true;
+            gridViewTextBoxColumn5.Name = "UserName";
+            gridViewTextBoxColumn5.Width = 225;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "Password";
+            gridViewTextBoxColumn6.HeaderText = "كلمة المرور";
+            gridViewTextBoxColumn6.IsAutoGenerated = true;
+            gridViewTextBoxColumn6.Name = "Password";
+            gridViewTextBoxColumn6.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn6.Width = 225;
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.FieldName = "UserGroup.GroupName";
+            gridViewTextBoxColumn7.HeaderText = "المجموعة/التبعية";
+            gridViewTextBoxColumn7.IsAutoGenerated = true;
+            gridViewTextBoxColumn7.Name = "UserGroup";
+            gridViewTextBoxColumn7.Width = 228;
             this.userSystemRadGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn8,
-            gridViewTextBoxColumn26,
-            gridViewTextBoxColumn27,
-            gridViewTextBoxColumn28});
+            gridViewDecimalColumn2,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7});
             this.userSystemRadGridView.MasterTemplate.DataSource = this.userSystemBindingSource;
-            sortDescriptor4.PropertyName = "Password";
+            sortDescriptor1.PropertyName = "Password";
             this.userSystemRadGridView.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor4});
+            sortDescriptor1});
             this.userSystemRadGridView.Name = "userSystemRadGridView";
             this.userSystemRadGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.userSystemRadGridView.Size = new System.Drawing.Size(918, 256);
@@ -312,6 +312,11 @@
             this.userSystemRadGridView.Text = "radGridView1";
             this.userSystemRadGridView.ThemeName = "VisualStudio2012Light";
             this.userSystemRadGridView.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.userSystemRadGridView_CurrentRowChanged);
+            this.userSystemRadGridView.DoubleClick += new System.EventHandler(this.userSystemRadGridView_DoubleClick);
+            // 
+            // userSystemBindingSource
+            // 
+            this.userSystemBindingSource.DataSource = typeof(Xprema.Data.UserSystem);
             // 
             // SysUsercontextMenuStrip
             // 
@@ -333,6 +338,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(153, 22);
             this.btnSave.Text = "حفظ     Ctrl+S";
@@ -340,6 +346,7 @@
             // 
             // BtnEdit
             // 
+            this.BtnEdit.Enabled = false;
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(153, 22);
             this.BtnEdit.Text = "تعديل     Ctrl+U";
@@ -347,14 +354,11 @@
             // 
             // BtnDel
             // 
+            this.BtnDel.Enabled = false;
             this.BtnDel.Name = "BtnDel";
             this.BtnDel.Size = new System.Drawing.Size(153, 22);
             this.BtnDel.Text = "حذف     Ctrl+D";
             this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
-            // 
-            // userSystemBindingSource
-            // 
-            this.userSystemBindingSource.DataSource = typeof(Xprema.Data.UserSystem);
             // 
             // frmUserSystem
             // 
@@ -383,8 +387,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.userGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSystemRadGridView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSystemRadGridView)).EndInit();
-            this.SysUsercontextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userSystemBindingSource)).EndInit();
+            this.SysUsercontextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

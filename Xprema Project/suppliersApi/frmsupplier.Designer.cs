@@ -54,7 +54,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.radCollapsiblePanel1 = new Telerik.WinControls.UI.RadCollapsiblePanel();
             this.iDTextBox = new System.Windows.Forms.TextBox();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.suppliersNaturalTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
@@ -62,6 +61,7 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.adderssTextBox = new System.Windows.Forms.TextBox();
             this.supplierRadGridView = new Telerik.WinControls.UI.RadGridView();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.suppliercontextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnNew = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,9 +78,9 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel1)).BeginInit();
             this.radCollapsiblePanel1.PanelContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierRadGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierRadGridView.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.suppliercontextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,9 +110,9 @@
             suppliersNaturalLabel.AutoSize = true;
             suppliersNaturalLabel.Location = new System.Drawing.Point(916, 76);
             suppliersNaturalLabel.Name = "suppliersNaturalLabel";
-            suppliersNaturalLabel.Size = new System.Drawing.Size(67, 13);
+            suppliersNaturalLabel.Size = new System.Drawing.Size(65, 13);
             suppliersNaturalLabel.TabIndex = 800;
-            suppliersNaturalLabel.Text = "طبيعة المواد";
+            suppliersNaturalLabel.Text = "طبيعة العمل";
             // 
             // phoneNumberLabel
             // 
@@ -238,9 +238,9 @@
             this.radCollapsiblePanel1.PanelContainer.Controls.Add(this.adderssTextBox);
             this.radCollapsiblePanel1.PanelContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.radCollapsiblePanel1.PanelContainer.Location = new System.Drawing.Point(3, 1);
-            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(984, 178);
+            this.radCollapsiblePanel1.PanelContainer.Size = new System.Drawing.Size(984, 192);
             this.radCollapsiblePanel1.PanelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.radCollapsiblePanel1_PanelContainer_Paint);
-            this.radCollapsiblePanel1.Size = new System.Drawing.Size(988, 207);
+            this.radCollapsiblePanel1.Size = new System.Drawing.Size(988, 222);
             this.radCollapsiblePanel1.TabIndex = 2;
             this.radCollapsiblePanel1.Text = "radCollapsiblePanel1";
             this.radCollapsiblePanel1.ThemeName = "VisualStudio2012Light";
@@ -248,21 +248,15 @@
             // iDTextBox
             // 
             this.iDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "ID", true));
             this.iDTextBox.Location = new System.Drawing.Point(684, 22);
             this.iDTextBox.Name = "iDTextBox";
             this.iDTextBox.ReadOnly = true;
             this.iDTextBox.Size = new System.Drawing.Size(226, 20);
             this.iDTextBox.TabIndex = 2;
             // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(Xprema.Data.Supplier);
-            // 
             // nameTextBox
             // 
             this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "name", true));
             this.nameTextBox.Location = new System.Drawing.Point(684, 48);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(226, 20);
@@ -271,7 +265,6 @@
             // suppliersNaturalTextBox
             // 
             this.suppliersNaturalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.suppliersNaturalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "SuppliersNatural", true));
             this.suppliersNaturalTextBox.Location = new System.Drawing.Point(684, 74);
             this.suppliersNaturalTextBox.Name = "suppliersNaturalTextBox";
             this.suppliersNaturalTextBox.Size = new System.Drawing.Size(226, 20);
@@ -280,7 +273,6 @@
             // phoneNumberTextBox
             // 
             this.phoneNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "PhoneNumber", true));
             this.phoneNumberTextBox.Location = new System.Drawing.Point(63, 22);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(263, 20);
@@ -289,7 +281,6 @@
             // faxTextBox
             // 
             this.faxTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.faxTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "Fax", true));
             this.faxTextBox.Location = new System.Drawing.Point(63, 72);
             this.faxTextBox.Name = "faxTextBox";
             this.faxTextBox.Size = new System.Drawing.Size(263, 20);
@@ -298,7 +289,6 @@
             // emailTextBox
             // 
             this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "Email", true));
             this.emailTextBox.Location = new System.Drawing.Point(63, 48);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(263, 20);
@@ -307,11 +297,10 @@
             // adderssTextBox
             // 
             this.adderssTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.adderssTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "Adderss", true));
             this.adderssTextBox.Location = new System.Drawing.Point(366, 95);
             this.adderssTextBox.Multiline = true;
             this.adderssTextBox.Name = "adderssTextBox";
-            this.adderssTextBox.Size = new System.Drawing.Size(280, 44);
+            this.adderssTextBox.Size = new System.Drawing.Size(280, 65);
             this.adderssTextBox.TabIndex = 6;
             // 
             // supplierRadGridView
@@ -322,7 +311,7 @@
             this.supplierRadGridView.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.supplierRadGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.supplierRadGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.supplierRadGridView.Location = new System.Drawing.Point(0, 231);
+            this.supplierRadGridView.Location = new System.Drawing.Point(0, 246);
             // 
             // supplierRadGridView
             // 
@@ -342,36 +331,36 @@
             gridViewTextBoxColumn1.Name = "name";
             gridViewTextBoxColumn1.Width = 201;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "PhoneNumber";
-            gridViewTextBoxColumn2.HeaderText = "رقم الهاتف";
+            gridViewTextBoxColumn2.FieldName = "SuppliersNatural";
+            gridViewTextBoxColumn2.HeaderText = "طبيعة العمل";
             gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.Name = "PhoneNumber";
-            gridViewTextBoxColumn2.Width = 175;
+            gridViewTextBoxColumn2.Name = "SuppliersNatural";
+            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn2.Width = 173;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "Adderss";
-            gridViewTextBoxColumn3.HeaderText = "العنوان";
+            gridViewTextBoxColumn3.FieldName = "PhoneNumber";
+            gridViewTextBoxColumn3.HeaderText = "رقم الهاتف";
             gridViewTextBoxColumn3.IsAutoGenerated = true;
-            gridViewTextBoxColumn3.Name = "Adderss";
-            gridViewTextBoxColumn3.Width = 114;
+            gridViewTextBoxColumn3.Name = "PhoneNumber";
+            gridViewTextBoxColumn3.Width = 175;
             gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "SuppliersNatural";
-            gridViewTextBoxColumn4.HeaderText = "طبيعة المواد الموَردة";
+            gridViewTextBoxColumn4.FieldName = "Fax";
+            gridViewTextBoxColumn4.HeaderText = "فاكس";
             gridViewTextBoxColumn4.IsAutoGenerated = true;
-            gridViewTextBoxColumn4.Name = "SuppliersNatural";
-            gridViewTextBoxColumn4.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn4.Width = 132;
+            gridViewTextBoxColumn4.Name = "Fax";
+            gridViewTextBoxColumn4.Width = 124;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "Fax";
-            gridViewTextBoxColumn5.HeaderText = "فاكس";
+            gridViewTextBoxColumn5.FieldName = "Email";
+            gridViewTextBoxColumn5.HeaderText = "البريد الالكتروني";
             gridViewTextBoxColumn5.IsAutoGenerated = true;
-            gridViewTextBoxColumn5.Name = "Fax";
-            gridViewTextBoxColumn5.Width = 149;
+            gridViewTextBoxColumn5.Name = "Email";
+            gridViewTextBoxColumn5.Width = 79;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "Email";
-            gridViewTextBoxColumn6.HeaderText = "البريد الالكتروني";
+            gridViewTextBoxColumn6.FieldName = "Adderss";
+            gridViewTextBoxColumn6.HeaderText = "العنوان";
             gridViewTextBoxColumn6.IsAutoGenerated = true;
-            gridViewTextBoxColumn6.Name = "Email";
-            gridViewTextBoxColumn6.Width = 94;
+            gridViewTextBoxColumn6.Name = "Adderss";
+            gridViewTextBoxColumn6.Width = 113;
             this.supplierRadGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewDecimalColumn1,
             gridViewTextBoxColumn1,
@@ -386,11 +375,15 @@
             sortDescriptor1});
             this.supplierRadGridView.Name = "supplierRadGridView";
             this.supplierRadGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.supplierRadGridView.Size = new System.Drawing.Size(988, 326);
+            this.supplierRadGridView.Size = new System.Drawing.Size(988, 311);
             this.supplierRadGridView.TabIndex = 3;
             this.supplierRadGridView.Text = "radGridView1";
             this.supplierRadGridView.ThemeName = "VisualStudio2012Light";
             this.supplierRadGridView.DoubleClick += new System.EventHandler(this.MasterTemplate_DoubleClick);
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(Xprema.Data.Supplier);
             // 
             // suppliercontextMenuStrip
             // 
@@ -428,6 +421,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(153, 22);
             this.btnDelete.Text = "حذف     Ctrl+D";
@@ -456,9 +450,9 @@
             this.radCollapsiblePanel1.PanelContainer.ResumeLayout(false);
             this.radCollapsiblePanel1.PanelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radCollapsiblePanel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierRadGridView.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierRadGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.suppliercontextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -471,7 +465,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private Telerik.WinControls.UI.RadCollapsiblePanel radCollapsiblePanel1;
         private System.Windows.Forms.TextBox iDTextBox;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox suppliersNaturalTextBox;
         private System.Windows.Forms.TextBox phoneNumberTextBox;
@@ -491,5 +484,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnEdit;
         private System.Windows.Forms.ToolStripMenuItem btnDelete;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
     }
 }

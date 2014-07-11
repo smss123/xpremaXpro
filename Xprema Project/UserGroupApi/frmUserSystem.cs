@@ -107,38 +107,41 @@ namespace Xprema_Project.UserGroupApi
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            foreach (Control item in this.radCollapsiblePanel1.Controls)
+            foreach (Control item in this.radCollapsiblePanel1.PanelContainer.Controls)
             {
                 if (item is TextBox)
                 {
-                    item.Text = ""; 
+                    item.Text = "";
+                    userNameTextBox.Focus();
                 }
             }
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            try
+            if (RadMessageBox.Show(Operations.SaveMessage, "رساله نبيه", MessageBoxButtons.YesNo, RadMessageIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-              
-                int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
-                int userId = int.Parse(this.idTextBox.Text);
-                UserGroup g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
-                UserSystem u = db.UserSystems.Where(p => p.Id == userId).SingleOrDefault();
-                
-                u.UserName = this.userNameTextBox.Text;
-                u.Password = this.passwordTextBox.Text;
-                u.UserGroup = g;
-                db.SaveChanges();
+                try
+                {
 
-                MessageBox.Show("don");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                    int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
+                    int userId = int.Parse(this.idTextBox.Text);
+                    UserGroup g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
+                    UserSystem u = db.UserSystems.Where(p => p.Id == userId).SingleOrDefault();
+
+                    u.UserName = this.userNameTextBox.Text;
+                    u.Password = this.passwordTextBox.Text;
+                    u.UserGroup = g;
+                    db.SaveChanges();
+
+                    MessageBox.Show("don");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
-
         private void BtnDel_Click(object sender, EventArgs e)
         {
             if (RadMessageBox.Show(Operations.DeleteMessage, "رساله تنبيه!", MessageBoxButtons.YesNo, RadMessageIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -171,6 +174,11 @@ namespace Xprema_Project.UserGroupApi
         }
 
         private void userSystemRadGridView_CurrentRowChanged(object sender, CurrentRowChangedEventArgs e)
+        {
+           
+        }
+
+        private void userSystemRadGridView_DoubleClick(object sender, EventArgs e)
         {
             UpdatePanelInfo(this.userSystemRadGridView.CurrentRow, 5);
         }
