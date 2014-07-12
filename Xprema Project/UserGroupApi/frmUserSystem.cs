@@ -21,7 +21,30 @@ namespace Xprema_Project.UserGroupApi
         {
             this.InitializeComponent();
         }
+           xUsersSystem cmd = new xUsersSystem();
+            void PopulateTree()
+            {
+                // Abu Ehab Code :
+                xUsersSystem UsersCmd = new xUsersSystem();
+                var AllUsers = UsersCmd.GetAllUsers();
+                var AllGroups = UsersCmd.GetAllGroups();
+                var AllElements = (from u in AllUsers
+                                   join g in AllGroups
+                                   on u.UserGroup.Id equals (g.Id)
+                                   select u).ToList();
 
+                UsersTree.Nodes.Clear();
+                UsersTree.Nodes.Add("Abu Ehab", "المستخدمين");
+                int i = 0;
+                foreach (var Usr in AllElements)
+                {
+                    UsersTree.Nodes[0].Nodes.Add("", Usr.UserName);
+                    UsersTree.Nodes[0].Nodes[i].Nodes.Add("", Usr.Password);
+                    UsersTree.Nodes[0].Nodes[i].Nodes.Add("", Usr.UserGroup.GroupName);
+                    i++;
+
+                }
+            }
         public void UserGroupComoBoxUpdate()
         {
             this.userGroupBindingSource.DataSource = this.db.UserGroups.ToList();
@@ -39,8 +62,10 @@ namespace Xprema_Project.UserGroupApi
         {
             try
             {
+                PopulateTree ();
                 this.Cursor = Cursors.WaitCursor;
                 this.UserGroupComoBoxUpdate();
+                dbContainer db = new dbContainer();
                 this.userSystemBindingSource.DataSource = db.UserSystems.ToList();
                 Application.DoEvents();
             }
@@ -58,7 +83,7 @@ namespace Xprema_Project.UserGroupApi
         {
             if (currentRow != null && !(currentRow is GridViewNewRowInfo))
             {
-                this.idTextBox.Text = currentRow.Cells["Id"].Value.ToString(); 
+                this.IDBox.Text = currentRow.Cells["Id"].Value.ToString(); 
                 this.userNameTextBox.Text = currentRow.Cells["UserName"].Value.ToString();
                 this.passwordTextBox.Text = currentRow.Cells["Password"].Value.ToString();
                 this.userGroupRadMultiColumnComboBox.Text = currentRow.Cells["UserGroup"].Value.ToString();
@@ -67,33 +92,23 @@ namespace Xprema_Project.UserGroupApi
         
         private void btnSave_Click(object sender, EventArgs e)
         {
-            xUsersSystem cmd = new xUsersSystem();
+           
             //MessageBox.Show(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
             int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
 
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                UserGroup g = new UserGroup();
-                g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
-
                 UserSystem user = new UserSystem()
                 {
                     UserName = this.userNameTextBox.Text,
                     Password = this.passwordTextBox.Text,
                 };
-                g.UserSystems.Add(user);
-                db.SaveChanges();
-                //if (cmd.AddUserSystems(user))
-                //{
-                //    this.Cursor = Cursors.Default;
-                //    MessageBox.Show("Ok");
-                //}
-                //else
-                //{
-                //    this.Cursor = Cursors.Default;
-                //    MessageBox.Show("Not Ok");
-                //}
+                
+                cmd.AddUser(user,gId );
+                MessageBox.Show("Save ");
+                frmUserSystem_Load(sender, e);
+                
             }
             catch (Exception ex)
             {
@@ -125,16 +140,19 @@ namespace Xprema_Project.UserGroupApi
                 {
 
                     int gId = int.Parse(this.userGroupRadMultiColumnComboBox.SelectedValue.ToString());
-                    int userId = int.Parse(this.idTextBox.Text);
-                    UserGroup g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
-                    UserSystem u = db.UserSystems.Where(p => p.Id == userId).SingleOrDefault();
+                    int userId = int.Parse(this.IDBox.Text);
+                    //UserGroup g = this.db.UserGroups.Where(p => p.Id == gId).SingleOrDefault();
+                    //UserSystem u = db.UserSystems.Where(p => p.Id == userId).SingleOrDefault();
 
-                    u.UserName = this.userNameTextBox.Text;
-                    u.Password = this.passwordTextBox.Text;
-                    u.UserGroup = g;
-                    db.SaveChanges();
+                    //u.UserName = this.userNameTextBox.Text;
+                    //u.Password = this.passwordTextBox.Text;
+                    //u.UserGroup = g;
+                    //db.SaveChanges();
+                                                         
+                    cmd.UpDateUser(userId,userNameTextBox.Text,passwordTextBox.Text,gId);
 
-                    MessageBox.Show("don");
+                    MessageBox.Show("Saved ");
+                    frmUserSystem_Load(sender, e);
                 }
                 catch (Exception ex)
                 {
@@ -149,8 +167,9 @@ namespace Xprema_Project.UserGroupApi
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
+
                     xUsersSystem cmd = new xUsersSystem();
-                    int ID = int.Parse(this.idTextBox.Text);
+                    int ID = int.Parse(this.IDBox.Text);
                     if (cmd.DeleteUser(ID))
                     {
                         this.Cursor = Cursors.Default;
@@ -181,6 +200,16 @@ namespace Xprema_Project.UserGroupApi
         private void userSystemRadGridView_DoubleClick(object sender, EventArgs e)
         {
             UpdatePanelInfo(this.userSystemRadGridView.CurrentRow, 5);
+        }
+
+        private void ExpanedBtn_Click(object sender, EventArgs e)
+        {
+            if (UsersTree.Nodes.Count != 0) { UsersTree.ExpandAll(); }
+        }
+
+        private void CollaspBtn_Click(object sender, EventArgs e)
+        {
+            if (UsersTree.Nodes.Count != 0) { UsersTree.CollapseAll (); }
         }
     }
 }

@@ -11,36 +11,36 @@ namespace Xprema.Data.CommandClass
         
         private   dbContainer db = new dbContainer();
 
-        public bool AddUserSystems( UserSystem Usr)
-        {
-            try
-            {
-      
-                db.UserSystems.Add(Usr);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
+        public bool AddUser(UserSystem Usr, int xid )
+        {
+
+            UserGroup Grp = new UserGroup();
+            Grp = (from u in db.UserGroups where u.Id == xid select u).Single();
+            Grp.UserSystems.Add(Usr);
+            db.SaveChanges();
+            return true;
         }
-        public bool EditUserSystems(UserSystem Usr)
+
+
+
+
+        public bool UpDateUser( int UsrID, string nam ,string pass ,int XGID )
         {
+    
             try
             {
-             var U =   db.UserSystems.Where(p => p.Id == Usr.Id).SingleOrDefault();
-             if (U .Id  != null)
-             {
-                 U.UserName = Usr.UserName;
-                 U.Password = Usr.Password;
-                // U.UserGroup = Usr.UserGroup;
-                 db.SaveChanges();
-                 return true;
+                UserSystem  U = db.UserSystems.Where(p => p.Id == UsrID).SingleOrDefault();
+                UserGroup g = db.UserGroups.Where(gg => gg.Id == XGID).SingleOrDefault();
+                if (U.Id != null)
+                {
+                    U .Password = pass ; U.UserName = nam ; 
+                    U.UserGroup = g;
+                    db.SaveChanges();
+                    return true;
 
-             }
-             else { return false; }
+                }
+                else { return false; }
             }
             catch (Exception)
             {
@@ -49,7 +49,11 @@ namespace Xprema.Data.CommandClass
             }
         }
 
+                                  
+          
+   
 
+       
         public  bool  UserLogin(string UsrName, string UsrPass)
         {
 
@@ -93,10 +97,16 @@ namespace Xprema.Data.CommandClass
                 return false;
             }
         }
+
+
+
         public List<UserSystem> GetAllUsers() { 
          var  AllUsers = ( from u in db.UserSystems   orderby u.UserName ascending select u ).ToList();
          return AllUsers;
         }
+
+        public List<UserGroup> GetAllGroups() { return (db.UserGroups).ToList(); }
+
     }
     }
 
